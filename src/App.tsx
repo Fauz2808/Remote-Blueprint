@@ -239,7 +239,7 @@ export default function App() {
           </section>
 
           <section className="action-section">
-            <div className="section-heading"><span>Action checklist</span><em>Kerjakan langsung di akun Upwork-mu</em></div>
+            <div className="section-heading"><span>Action checklist</span><em>Ikuti langkahnya, lalu periksa kriteria selesai</em></div>
             <ol className="action-list">
               {activeLesson.actions.map((action, index) => (
                 <li key={action.title}>
