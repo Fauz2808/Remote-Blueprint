@@ -242,9 +242,17 @@ export default function App() {
             <div className="section-heading"><span>Action checklist</span><em>Kerjakan langsung di akun Upwork-mu</em></div>
             <ol className="action-list">
               {activeLesson.actions.map((action, index) => (
-                <li key={action}><span>{String(index + 1).padStart(2, '0')}</span><p>{action}</p></li>
+                <li key={action.title}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <div className="action-copy"><h3>{action.title}</h3><p>{action.detail}</p></div>
+                </li>
               ))}
             </ol>
+            {activeLesson.source && (
+              <a className="lesson-source" href={activeLesson.source.url} target="_blank" rel="noreferrer">
+                <span><BookOpen size={16} /> Sumber resmi: {activeLesson.source.label}</span><ExternalLink size={15} />
+              </a>
+            )}
           </section>
 
           {activeLesson.id === 'proposal' && (
