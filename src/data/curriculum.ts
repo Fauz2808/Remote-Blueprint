@@ -1153,6 +1153,7 @@ export const redFlags = [
     signs: [
       'Profil klien baru dibuat, belum ada riwayat pembayaran (payment unverified), atau job pertama.',
       'Riwayat banyak kontrak berakhir cepat dengan rating rendah dari freelancer sebelumnya.',
+      'Buka bagian review/feedback di profil klien: banyak keluhan soal telat bayar, komunikasi buruk, atau scope creep dari freelancer lain adalah sinyal kuat, bukan cuma lihat angka rating.',
       'Menolak menggunakan Upwork Messages/kontrak resmi, minta transaksi di luar platform.',
       'Menjanjikan bonus besar atau proyek jangka panjang tapi menekan supaya mulai kerja sebelum kontrak aktif.',
     ],
