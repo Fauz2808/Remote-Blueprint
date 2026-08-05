@@ -1,60 +1,236 @@
 export type Lesson = {
-  id: string;
-  title: string;
-  content: string;
-};
+  id: string
+  title: string
+  duration: string
+  summary: string
+  outcome: string
+  actions: string[]
+}
 
 export type Phase = {
-  id: string;
-  title: string;
-  description: string;
-  lessons: Lesson[];
-};
+  id: string
+  number: string
+  title: string
+  shortTitle: string
+  description: string
+  milestone: string
+  lessons: Lesson[]
+}
 
 export const curriculum: Phase[] = [
   {
-    id: "phase-1",
-    title: "Fase 1: Fondasi Profil 100%",
-    description: "Membangun fondasi profil Upwork agar masuk ke algoritma dan dilirik klien.",
+    id: 'foundation',
+    number: '01',
+    title: 'Fondasi profil',
+    shortTitle: 'Fondasi',
+    description: 'Buat profil lengkap, spesifik, dan layak dipercaya sebelum mengirim proposal pertama.',
+    milestone: 'Profil 100% siap ditemukan dan dinilai klien.',
     lessons: [
-      { id: "1-1", title: "Indikator Profil 100%", content: "Syarat wajib masuk algoritma. Jangan ada biodata yang kosong." },
-      { id: "1-2", title: "Professional Headshot", content: "Foto wajib profesional. Tidak boleh foto asal atau blur." },
-      { id: "1-3", title: "Portofolio & Sertifikat", content: "Isi portofolio dan sertifikat (opsional tapi sangat disarankan)." },
-      { id: "1-4", title: "SEO Upwork (Keyword)", content: "Masukkan keyword spesifik di deskripsi profil (Contoh: BUKAN 'Designer', TAPI 'SaaS UI/UX Designer | Figma')." },
-      { id: "1-5", title: "Setup Rate Sesuai Level", content: "Pasang rate sesuai kemampuan (Beginner/Intermediate/Expert)." },
-    ]
+      {
+        id: 'profile-100',
+        title: 'Lengkapi profil sampai 100%',
+        duration: '12 menit',
+        summary: 'Profil kosong mengurangi sinyal kepercayaan dan peluang muncul di hasil pencarian.',
+        outcome: 'Semua bagian wajib terisi tanpa filler.',
+        actions: ['Isi riwayat kerja, pendidikan, bahasa, dan availability.', 'Pastikan judul, rate, lokasi, dan kategori konsisten.', 'Periksa indikator kelengkapan profil sebelum lanjut.'],
+      },
+      {
+        id: 'headshot',
+        title: 'Bangun first impression profesional',
+        duration: '8 menit',
+        summary: 'Headshot bersih membuat profil terasa aman sebelum klien membaca satu kata pun.',
+        outcome: 'Foto profil tajam, terang, dan tidak terlihat kasual.',
+        actions: ['Gunakan framing kepala dan bahu.', 'Pilih latar polos dengan cahaya dari depan.', 'Hindari selfie, filter berat, dan foto grup.'],
+      },
+      {
+        id: 'positioning',
+        title: 'Tulis positioning yang spesifik',
+        duration: '20 menit',
+        summary: 'Klien mencari solusi spesifik, bukan daftar semua skill yang pernah dipelajari.',
+        outcome: 'Headline dan overview menjawab: siapa yang dibantu, masalah apa, dan dengan skill apa.',
+        actions: ['Pilih satu kategori masalah utama.', 'Masukkan keyword yang benar-benar dicari klien.', 'Buka overview dengan hasil yang bisa kamu bantu capai.'],
+      },
+      {
+        id: 'portfolio',
+        title: 'Ubah portfolio menjadi bukti',
+        duration: '35 menit',
+        summary: 'Portfolio kuat menjelaskan keputusan dan hasil, bukan hanya menampilkan gambar akhir.',
+        outcome: 'Minimal tiga case study dengan alur masalah, tindakan, dan hasil.',
+        actions: ['Pilih tiga karya paling relevan dengan positioning.', 'Tulis konteks masalah dan batasannya.', 'Tutup dengan hasil, angka, atau perubahan yang terjadi.'],
+      },
+    ],
   },
   {
-    id: "phase-2",
-    title: "Fase 2: Strategi Pecah Telor",
-    description: "Cara memenangkan pekerjaan pertama di Upwork dan mengumpulkan review bintang 5.",
+    id: 'first-win',
+    number: '02',
+    title: 'Pecah telor',
+    shortTitle: 'Pecah telor',
+    description: 'Pilih peluang dengan disiplin, kirim proposal relevan, lalu kejar bukti sosial pertama.',
+    milestone: 'Kontrak pertama selesai dengan review kuat.',
     lessons: [
-      { id: "2-1", title: "Filter Entry Level Job", content: "Cari pekerjaan dengan badge 'Entry Level' sesuai bidangmu." },
-      { id: "2-2", title: "Strategi Boost Profile", content: "Kapan harus bakar Connects dan kapan harus simpan." },
-      { id: "2-3", title: "Turun Ego Harga", content: "Jangan nego harga di awal. $10 untuk job pertama tidak apa-apa demi review." },
-      { id: "2-4", title: "Cover Letter Problem-Solving", content: "Modifikasi template proposal: Fokus selesaikan masalah klien, beri ide gratis di awal." },
-      { id: "2-5", title: "Target Review 5 Bintang", content: "Selesaikan kontrak cepat, minta review 5 bintang dan testimoni. Ini membuka badge 'Rising Talent'." },
-    ]
+      {
+        id: 'job-filter',
+        title: 'Filter job dengan peluang menang',
+        duration: '15 menit',
+        summary: 'Connects habis karena salah memilih job, bukan karena proposal kurang panjang.',
+        outcome: 'Shortlist job yang cocok dengan level, skill, budget, dan timing.',
+        actions: ['Prioritaskan job baru dengan scope jelas.', 'Cocokkan level experience dengan profil saat ini.', 'Lewati brief generik, budget tidak masuk akal, atau histori klien buruk.'],
+      },
+      {
+        id: 'proposal',
+        title: 'Tulis proposal problem-solving',
+        duration: '25 menit',
+        summary: 'Dua baris pertama harus membuktikan kamu membaca brief dan memahami risikonya.',
+        outcome: 'Proposal singkat dengan hook, diagnosis, bukti, rencana, dan pertanyaan ringan.',
+        actions: ['Sebut masalah spesifik dari brief.', 'Berikan satu insight atau langkah awal yang berguna.', 'Tutup dengan pertanyaan yang mudah dijawab.'],
+      },
+      {
+        id: 'connects',
+        title: 'Gunakan Connects dengan sadar',
+        duration: '10 menit',
+        summary: 'Boost bukan pengganti relevansi. Gunakan saat profil dan proposal memang cocok.',
+        outcome: 'Punya batas harian dan catatan hasil setiap proposal.',
+        actions: ['Tentukan budget Connects mingguan.', 'Boost hanya pada peluang dengan fit tinggi.', 'Catat sent, viewed, interview, dan hired.'],
+      },
+      {
+        id: 'first-contract',
+        title: 'Turunkan ego, bukan standar kerja',
+        duration: '12 menit',
+        summary: 'Job kecil boleh diambil jika scope aman dan bisa menghasilkan review pertama.',
+        outcome: 'Kontrak awal dipilih sebagai investasi bukti sosial, bukan perang harga permanen.',
+        actions: ['Pastikan scope bisa diselesaikan cepat dan baik.', 'Sepakati definisi selesai sebelum mulai.', 'Prioritaskan komunikasi dan review, bukan nominal awal.'],
+      },
+    ],
   },
   {
-    id: "phase-3",
-    title: "Fase 3: Komunikasi & Eksekusi",
-    description: "Membangun kepercayaan klien dan memberikan value lebih.",
+    id: 'delivery',
+    number: '03',
+    title: 'Delivery & trust',
+    shortTitle: 'Delivery',
+    description: 'Jadikan komunikasi dan problem solving sebagai alasan klien terus memperpanjang kontrak.',
+    milestone: 'Klien merasa aman, mendapat hasil, dan ingin bekerja lagi.',
     lessons: [
-      { id: "3-1", title: "Bahasa Inggris Wajib", content: "Posisikan diri sebagai ahli/konsultan. Komunikasi adalah kunci keamanan klien." },
-      { id: "3-2", title: "Sistem Pembayaran", content: "Pahami perbedaan Fixed-price vs Hourly contract dan proteksi Escrow." },
-      { id: "3-3", title: "Under Promise, Over Deliver", content: "Janjikan 1 solusi, berikan 3 opsi desain/solusi saat delivery." },
-      { id: "3-4", title: "Proaktif Komunikasi", content: "Jangan diam menunggu instruksi. Berikan update berkala sebelum diminta." },
-    ]
+      {
+        id: 'onboarding',
+        title: 'Mulai dengan ekspektasi yang jelas',
+        duration: '18 menit',
+        summary: 'Kontrak bermasalah biasanya dimulai dari asumsi yang tidak pernah ditulis.',
+        outcome: 'Scope, timeline, channel, dan approval flow disepakati.',
+        actions: ['Ringkas ulang brief dengan bahasamu.', 'Konfirmasi deliverable, deadline, dan PIC approval.', 'Tulis apa yang tidak termasuk dalam scope.'],
+      },
+      {
+        id: 'english',
+        title: 'Komunikasikan solusi dalam English',
+        duration: '20 menit',
+        summary: 'Skill teknis tidak cukup jika klien sulit memahami progres dan keputusanmu.',
+        outcome: 'Update kerja ringkas, jelas, dan mudah ditindaklanjuti.',
+        actions: ['Gunakan kalimat pendek dan active voice.', 'Pisahkan progress, blocker, dan next step.', 'Selalu beri rekomendasi, bukan hanya melaporkan masalah.'],
+      },
+      {
+        id: 'overdeliver',
+        title: 'Under-promise, over-deliver',
+        duration: '16 menit',
+        summary: 'Nilai ekstra harus relevan. Tiga opsi bagus lebih berguna daripada sepuluh file tanpa arah.',
+        outcome: 'Delivery utama selesai, plus opsi atau insight yang mempercepat keputusan klien.',
+        actions: ['Penuhi janji utama lebih dulu.', 'Tambahkan maksimal dua opsi relevan.', 'Jelaskan trade-off setiap opsi.'],
+      },
+      {
+        id: 'review',
+        title: 'Tutup kontrak dengan review sehat',
+        duration: '10 menit',
+        summary: 'Momen meminta feedback adalah setelah nilai pekerjaan terasa jelas.',
+        outcome: 'Kontrak ditutup rapi dengan bukti hasil dan permintaan feedback yang natural.',
+        actions: ['Kirim recap hasil dan file final.', 'Tanyakan apakah ada hal terakhir yang perlu dibereskan.', 'Minta feedback jujur setelah klien mengonfirmasi selesai.'],
+      },
+    ],
   },
   {
-    id: "phase-4",
-    title: "Fase 4: Skala & Hidden Market",
-    description: "Mendapatkan klien baru dari referensi dan repeat order tanpa bakar Connects.",
+    id: 'scale',
+    number: '04',
+    title: 'Scale & referral',
+    shortTitle: 'Scale',
+    description: 'Ubah pekerjaan selesai menjadi repeat order, referral, dan rate yang lebih sehat.',
+    milestone: 'Pipeline tidak lagi bergantung penuh pada proposal baru.',
     lessons: [
-      { id: "4-1", title: "Follow-up Klien Lama", content: "Tanya kabar klien setelah 1 atau 3 bulan kontrak selesai." },
-      { id: "4-2", title: "Update Portofolio Berkala", content: "Kirim update portofolio terbarumu ke jaringan klien lama." },
-      { id: "4-3", title: "Konversi Referral", content: "Dapatkan Direct Contracts dari referral klien lama. Referral lebih gampang close daripada bidding dari 0." },
-    ]
-  }
-];
+      {
+        id: 'follow-up',
+        title: 'Follow-up 30 dan 90 hari',
+        duration: '10 menit',
+        summary: 'Klien lama lebih mudah percaya, tetapi mereka tetap perlu diingatkan bahwa kamu tersedia.',
+        outcome: 'Follow-up relevan tanpa terasa mengejar pekerjaan.',
+        actions: ['Tanya perkembangan hasil pekerjaan sebelumnya.', 'Kirim insight yang terkait bisnis mereka.', 'Sebut availability hanya jika konteksnya pas.'],
+      },
+      {
+        id: 'portfolio-loop',
+        title: 'Bangun portfolio loop',
+        duration: '15 menit',
+        summary: 'Setiap project selesai harus memperkuat profil untuk project berikutnya.',
+        outcome: 'Case study baru, positioning lebih tajam, dan bukti sosial bertambah.',
+        actions: ['Dokumentasikan problem dan hasil selama project.', 'Minta izin memakai bagian yang tidak sensitif.', 'Update portfolio dan overview secara berkala.'],
+      },
+      {
+        id: 'referral',
+        title: 'Minta referral dengan konteks',
+        duration: '8 menit',
+        summary: 'Referral efektif ketika klien tahu tipe orang dan masalah yang paling cocok untukmu.',
+        outcome: 'Permintaan referral spesifik, ringan, dan mudah diteruskan.',
+        actions: ['Sebut profil klien idealmu.', 'Berikan satu kalimat intro yang bisa diteruskan.', 'Jangan menawarkan diskon sebagai imbalan default.'],
+      },
+      {
+        id: 'rate',
+        title: 'Naikkan rate berdasarkan bukti',
+        duration: '12 menit',
+        summary: 'Rate naik setelah positioning, demand, dan bukti hasil menguat—bukan karena kalender berganti.',
+        outcome: 'Rate baru punya alasan yang bisa dijelaskan dengan percaya diri.',
+        actions: ['Review win rate dan kapasitas kerja.', 'Naikkan rate untuk lead baru lebih dulu.', 'Pertahankan klien lama berdasarkan scope dan nilai kontrak.'],
+      },
+    ],
+  },
+]
+
+export const officialResources = [
+  { label: 'Cara kerja Upwork untuk freelancer', url: 'https://www.upwork.com/i/how-it-works/freelancer/' },
+  { label: 'Cara menjadi freelancer', url: 'https://www.upwork.com/resources/how-to-become-a-freelancer' },
+  { label: 'Panduan proposal dari Upwork', url: 'https://www.upwork.com/resources/how-to-create-a-proposal-that-wins-jobs' },
+]
+
+export const proposalTemplate = `Hi [Client name],
+
+I noticed [specific problem from the brief]. The main risk here is [short diagnosis].
+
+A practical first step would be [useful idea]. I have handled similar work using [relevant proof or skill], and I would approach this in three steps:
+1. [Step one]
+2. [Step two]
+3. [Step three]
+
+If useful, I can send a quick outline for [specific deliverable] before we start. Is [low-friction question] the priority right now?
+
+Best,
+[Your name]`
+
+export const allLessonIds = curriculum.flatMap((phase) => phase.lessons.map((lesson) => lesson.id))
+
+export const totalMinutes = curriculum.reduce(
+  (total, phase) => total + phase.lessons.reduce((phaseTotal, lesson) => phaseTotal + Number.parseInt(lesson.duration), 0),
+  0,
+)
+
+export function sanitizeProgress(value: unknown): Record<string, boolean> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
+  return Object.fromEntries(
+    Object.entries(value).filter(([id, done]) => allLessonIds.includes(id) && typeof done === 'boolean'),
+  )
+}
+
+export function calculateProgress(progress: Record<string, boolean>) {
+  const completed = allLessonIds.filter((id) => progress[id]).length
+  return { completed, total: allLessonIds.length, percentage: Math.round((completed / allLessonIds.length) * 100) }
+}
+
+if (import.meta.env.DEV) {
+  console.assert(new Set(allLessonIds).size === allLessonIds.length, 'Lesson IDs must be unique')
+  console.assert(calculateProgress({}).percentage === 0, 'Empty progress must be 0%')
+  console.assert(calculateProgress(Object.fromEntries(allLessonIds.map((id) => [id, true]))).percentage === 100, 'Full progress must be 100%')
+}
+
+export default curriculum
