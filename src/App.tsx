@@ -210,13 +210,71 @@ export default function App() {
         </nav>
 
         <div className="sidebar-actions">
-          <button onClick={() => setShowVault(true)}><FileText size={16} /> Template vault</button>
+          <button onClick={() => setShowVault(true)}><FileText size={16} /> Upwork Labs</button>
           <button onClick={resetProgress}><RotateCcw size={16} /> Reset progres</button>
           <button onClick={() => { sessionStorage.removeItem(ACCESS_KEY); setHasAccess(false) }}><LogOut size={16} /> Keluar</button>
         </div>
       </aside>
       {mobileNav && <button className="scrim" onClick={() => setMobileNav(false)} aria-label="Tutup navigasi" />}
 
+      {showVault ? (
+      <main className="labs-page">
+        <div className="lesson-toolbar">
+          <div className="breadcrumbs"><strong>Upwork Labs</strong></div>
+          <button className="vault-button" onClick={() => setShowVault(false)}><X size={16} /> Kembali ke lesson</button>
+        </div>
+
+        <header className="labs-hero">
+          <p className="eyebrow">Resource center</p>
+          <h1>Upwork Labs</h1>
+          <p>Kumpulan tools dan referensi siap pakai di luar kurikulum utama — dipakai kapan saja saat kamu butuh template, benchmark, atau sumber resmi.</p>
+        </header>
+
+        <section className="template-card labs-resource">
+          <div className="template-meta"><span><p className="eyebrow">Resource 01</p>Proposal framework</span><button onClick={copyTemplate}>{copied ? <Check size={15} /> : <Copy size={15} />}{copied ? 'Tersalin' : 'Salin'}</button></div>
+          <pre>{proposalTemplate}</pre>
+        </section>
+
+        <section className="optimizer-lab labs-resource">
+          <div className="optimizer-heading">
+            <div><p className="eyebrow">Resource 02</p><h3><WandSparkles size={18} /> Profile Optimization Lab</h3></div>
+            <span>Diproses lokal · tanpa scraping</span>
+          </div>
+          <p className="optimizer-intro">Rangkai positioning dari niche, masalah klien, skill, dan bukti milikmu sendiri. Gunakan benchmark pasar sebagai referensi, bukan bahan salin-tempel.</p>
+          <div className="optimizer-form">
+            <label>Niche atau role<input value={profileInputs.niche} onChange={(event) => setProfileInputs({ ...profileInputs, niche: event.target.value })} placeholder="Contoh: SaaS UX Designer" /></label>
+            <label>Target klien<input value={profileInputs.client} onChange={(event) => setProfileInputs({ ...profileInputs, client: event.target.value })} placeholder="Contoh: early-stage SaaS teams" /></label>
+            <label>Masalah utama<input value={profileInputs.problem} onChange={(event) => setProfileInputs({ ...profileInputs, problem: event.target.value })} placeholder="Contoh: confusing onboarding flows" /></label>
+            <label>Skill utama<input value={profileInputs.skills} onChange={(event) => setProfileInputs({ ...profileInputs, skills: event.target.value })} placeholder="Figma, UX Research, Prototyping" /></label>
+            <label className="optimizer-wide">Bukti hasil<input value={profileInputs.proof} onChange={(event) => setProfileInputs({ ...profileInputs, proof: event.target.value })} placeholder="Contoh: reduced onboarding drop-off by 18%" /></label>
+            <label>Benchmark rate<input value={profileInputs.rate} onChange={(event) => setProfileInputs({ ...profileInputs, rate: event.target.value })} placeholder="$25–$35/hour" /></label>
+          </div>
+          <div className="profile-preview">
+            <div className="profile-preview-title"><BriefcaseBusiness size={17} /><span>Profile draft</span></div>
+            <dl>
+              <div><dt>Headline</dt><dd>{profileDraft.headline || 'Isi niche dan skill untuk membuat headline.'}</dd></div>
+              <div><dt>Overview opening</dt><dd>{profileDraft.overview || 'Isi target klien dan masalah utama untuk membuat opening.'}</dd></div>
+              <div><dt>Skills</dt><dd>{profileDraft.skills.join(' · ') || 'Belum ada skill dipilih.'}</dd></div>
+              <div><dt>Rate reference</dt><dd>{profileInputs.rate || 'Bandingkan median niche, lalu sesuaikan dengan bukti dan pengalaman.'}</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section className="resource-list labs-resource">
+          <p className="eyebrow">Resource 03</p>
+          <h3><BookOpen size={17} /> Sumber resmi Upwork</h3>
+          {officialResources.map((resource) => (
+            <a key={resource.url} href={resource.url} target="_blank" rel="noreferrer"><span>{resource.label}</span><ExternalLink size={15} /></a>
+          ))}
+        </section>
+
+        <section className="labs-resource labs-placeholder">
+          <p className="eyebrow">Resource 04</p>
+          <h3>Segera hadir</h3>
+          <p>Rate calculator, red flag checklist, dan template lain ditambahkan bertahap di sini.</p>
+        </section>
+      </main>
+      ) : (
       <main className="lesson-page">
         <div className="lesson-toolbar">
           <div className="breadcrumbs"><span>Fase {activePhase.number}</span><ChevronRight size={14} /><strong>{activeLesson.title}</strong></div>
@@ -293,52 +351,8 @@ export default function App() {
           </footer>
         </article>
       </main>
-
-      {showVault && (
-        <div className="modal-layer" role="dialog" aria-modal="true" aria-labelledby="vault-title">
-          <button className="modal-scrim" onClick={() => setShowVault(false)} aria-label="Tutup template vault" />
-          <section className="vault-panel">
-            <header className="vault-header">
-              <div><p className="eyebrow">Resource 01</p><h2 id="vault-title">Template vault</h2></div>
-              <button className="icon-button" onClick={() => setShowVault(false)} aria-label="Tutup"><X size={20} /></button>
-            </header>
-            <div className="template-card">
-              <div className="template-meta"><span>Proposal framework</span><button onClick={copyTemplate}>{copied ? <Check size={15} /> : <Copy size={15} />}{copied ? 'Tersalin' : 'Salin'}</button></div>
-              <pre>{proposalTemplate}</pre>
-            </div>
-            <div className="resource-list">
-              <h3><BookOpen size={17} /> Sumber resmi Upwork</h3>
-              {officialResources.map((resource) => (
-                <a key={resource.url} href={resource.url} target="_blank" rel="noreferrer"><span>{resource.label}</span><ExternalLink size={15} /></a>
-              ))}
-            </div>
-            <div className="optimizer-lab">
-              <div className="optimizer-heading">
-                <div><p className="eyebrow">Resource 02</p><h3><WandSparkles size={18} /> Profile Optimization Lab</h3></div>
-                <span>Diproses lokal · tanpa scraping</span>
-              </div>
-              <p className="optimizer-intro">Rangkai positioning dari niche, masalah klien, skill, dan bukti milikmu sendiri. Gunakan benchmark pasar sebagai referensi, bukan bahan salin-tempel.</p>
-              <div className="optimizer-form">
-                <label>Niche atau role<input value={profileInputs.niche} onChange={(event) => setProfileInputs({ ...profileInputs, niche: event.target.value })} placeholder="Contoh: SaaS UX Designer" /></label>
-                <label>Target klien<input value={profileInputs.client} onChange={(event) => setProfileInputs({ ...profileInputs, client: event.target.value })} placeholder="Contoh: early-stage SaaS teams" /></label>
-                <label>Masalah utama<input value={profileInputs.problem} onChange={(event) => setProfileInputs({ ...profileInputs, problem: event.target.value })} placeholder="Contoh: confusing onboarding flows" /></label>
-                <label>Skill utama<input value={profileInputs.skills} onChange={(event) => setProfileInputs({ ...profileInputs, skills: event.target.value })} placeholder="Figma, UX Research, Prototyping" /></label>
-                <label className="optimizer-wide">Bukti hasil<input value={profileInputs.proof} onChange={(event) => setProfileInputs({ ...profileInputs, proof: event.target.value })} placeholder="Contoh: reduced onboarding drop-off by 18%" /></label>
-                <label>Benchmark rate<input value={profileInputs.rate} onChange={(event) => setProfileInputs({ ...profileInputs, rate: event.target.value })} placeholder="$25–$35/hour" /></label>
-              </div>
-              <div className="profile-preview">
-                <div className="profile-preview-title"><BriefcaseBusiness size={17} /><span>Profile draft</span></div>
-                <dl>
-                  <div><dt>Headline</dt><dd>{profileDraft.headline || 'Isi niche dan skill untuk membuat headline.'}</dd></div>
-                  <div><dt>Overview opening</dt><dd>{profileDraft.overview || 'Isi target klien dan masalah utama untuk membuat opening.'}</dd></div>
-                  <div><dt>Skills</dt><dd>{profileDraft.skills.join(' · ') || 'Belum ada skill dipilih.'}</dd></div>
-                  <div><dt>Rate reference</dt><dd>{profileInputs.rate || 'Bandingkan median niche, lalu sesuaikan dengan bukti dan pengalaman.'}</dd></div>
-                </dl>
-              </div>
-            </div>
-          </section>
-        </div>
       )}
+
     </div>
   )
 }
