@@ -57,6 +57,7 @@ export default function App() {
   const [showVault, setShowVault] = useState(false)
   const [copied, setCopied] = useState(false)
   const [profileInputs, setProfileInputs] = useState({ niche: '', client: '', problem: '', skills: '', proof: '', rate: '' })
+  const [rateInputs, setRateInputs] = useState({ livingCost: '', otherCosts: '', savingsPercent: '20', billableHours: '20', platformFeePercent: '10' })
 
   const stats = calculateProgress(progress)
   const activePhase = curriculum.find((phase) => phase.lessons.some((lesson) => lesson.id === activeLessonId)) ?? curriculum[0]
@@ -72,6 +73,21 @@ export default function App() {
       : ''
     return { headline, overview, skills }
   }, [profileInputs])
+
+  const rateDraft = useMemo(() => {
+    const living = Number(rateInputs.livingCost) || 0
+    const other = Number(rateInputs.otherCosts) || 0
+    const savingsPercent = Number(rateInputs.savingsPercent) || 0
+    const billableHours = Number(rateInputs.billableHours) || 0
+    const feePercent = Number(rateInputs.platformFeePercent) || 0
+    const monthlyBaseline = living + other
+    const withSavings = monthlyBaseline * (1 + savingsPercent / 100)
+    const weeklyTarget = withSavings / 4.33
+    const grossHourly = billableHours > 0 ? weeklyTarget / billableHours : 0
+    const netAfterFee = grossHourly * (1 - feePercent / 100)
+    const minProjectRate = grossHourly * 10
+    return { monthlyBaseline, withSavings, grossHourly, netAfterFee, minProjectRate, billableHours }
+  }, [rateInputs])
 
   useEffect(() => {
     localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress))
@@ -268,10 +284,28 @@ export default function App() {
           ))}
         </section>
 
-        <section className="labs-resource labs-placeholder">
-          <p className="eyebrow">Resource 04</p>
-          <h3>Segera hadir</h3>
-          <p>Rate calculator, red flag checklist, dan template lain ditambahkan bertahap di sini.</p>
+        <section className="optimizer-lab labs-resource">
+          <div className="optimizer-heading">
+            <div><p className="eyebrow">Resource 04</p><h3><WandSparkles size={18} /> Rate Calculator</h3></div>
+            <span>Diproses lokal · tanpa scraping</span>
+          </div>
+          <p className="optimizer-intro">Hitung target hourly rate dari biaya hidup, tabungan, dan kapasitas jam billable-mu — bukan menebak-nebak angka dari rate orang lain.</p>
+          <div className="optimizer-form">
+            <label>Biaya hidup bulanan (US$)<input value={rateInputs.livingCost} onChange={(event) => setRateInputs({ ...rateInputs, livingCost: event.target.value })} placeholder="Contoh: 500" inputMode="decimal" /></label>
+            <label>Biaya lain per bulan (US$)<input value={rateInputs.otherCosts} onChange={(event) => setRateInputs({ ...rateInputs, otherCosts: event.target.value })} placeholder="Software, internet, dll" inputMode="decimal" /></label>
+            <label>Target tabungan (%)<input value={rateInputs.savingsPercent} onChange={(event) => setRateInputs({ ...rateInputs, savingsPercent: event.target.value })} placeholder="20" inputMode="decimal" /></label>
+            <label>Jam billable per minggu<input value={rateInputs.billableHours} onChange={(event) => setRateInputs({ ...rateInputs, billableHours: event.target.value })} placeholder="20" inputMode="decimal" /></label>
+            <label className="optimizer-wide">Fee Upwork (%)<input value={rateInputs.platformFeePercent} onChange={(event) => setRateInputs({ ...rateInputs, platformFeePercent: event.target.value })} placeholder="10" inputMode="decimal" /></label>
+          </div>
+          <div className="profile-preview">
+            <div className="profile-preview-title"><BriefcaseBusiness size={17} /><span>Rate draft</span></div>
+            <dl>
+              <div><dt>Kebutuhan bulanan + tabungan</dt><dd>{rateDraft.withSavings > 0 ? `US$${rateDraft.withSavings.toFixed(0)}/bulan` : 'Isi biaya hidup dan target tabungan.'}</dd></div>
+              <div><dt>Target hourly rate (kotor)</dt><dd>{rateDraft.grossHourly > 0 ? `US$${rateDraft.grossHourly.toFixed(1)}/jam untuk ${rateDraft.billableHours} jam billable per minggu` : 'Isi jam billable untuk menghitung rate.'}</dd></div>
+              <div><dt>Estimasi setelah fee Upwork</dt><dd>{rateDraft.netAfterFee > 0 ? `US$${rateDraft.netAfterFee.toFixed(1)}/jam bersih` : 'Isi fee untuk melihat estimasi bersih.'}</dd></div>
+              <div><dt>Minimal project rate (quote ke klien)</dt><dd>{rateDraft.minProjectRate > 0 ? `US$${rateDraft.minProjectRate.toFixed(0)} untuk project setara 10 jam kerja — fee Upwork dipotong dari angka ini, bukan ditambah di luar` : 'Lengkapi input di atas dulu.'}</dd></div>
+            </dl>
+          </div>
         </section>
       </main>
       ) : (
