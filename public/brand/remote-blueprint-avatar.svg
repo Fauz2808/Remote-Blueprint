@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Remote Blueprint avatar</title>
+  <desc id="desc">Monogram Forward Blueprint</desc>
+  <rect width="512" height="512" rx="96" fill="#073622"/>
+  <path fill="#FFFDF5" fill-rule="evenodd" d="M104 80h180c78 0 126 41 126 106 0 37-18 66-52 84 18 9 33 21 44 36l-64 44c-9-28-31-42-66-42h-88v116h-80V80Zm80 64v100h94c36 0 54-17 54-50 0-34-18-50-54-50h-94Z"/>
+  <path d="M272 308h66l82 58-82 58h-66c45-14 68-34 68-58s-23-44-68-58Z" fill="#D9F56F"/>
+</svg>
