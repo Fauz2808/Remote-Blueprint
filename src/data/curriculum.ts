@@ -1138,6 +1138,35 @@ export const officialResources = [
   { label: 'Panduan proposal dari Upwork', url: 'https://www.upwork.com/resources/how-to-create-a-proposal-that-wins-jobs' },
 ]
 
+export const redFlags = [
+  {
+    category: 'Job post',
+    signs: [
+      'Minta kerja contoh gratis (unpaid test task) di luar Upwork sebelum kontrak resmi jalan.',
+      'Ajak lanjut komunikasi lewat WhatsApp, Telegram, atau email pribadi sebelum kontrak dibuat.',
+      'Budget sangat rendah untuk scope yang besar, atau deskripsi job asal copy-paste tanpa detail.',
+      'Deadline sangat mepet dikombinasikan dengan permintaan akses penuh (password, kartu, akun bank) di awal.',
+    ],
+  },
+  {
+    category: 'Klien',
+    signs: [
+      'Profil klien baru dibuat, belum ada riwayat pembayaran (payment unverified), atau job pertama.',
+      'Riwayat banyak kontrak berakhir cepat dengan rating rendah dari freelancer sebelumnya.',
+      'Menolak menggunakan Upwork Messages/kontrak resmi, minta transaksi di luar platform.',
+      'Menjanjikan bonus besar atau proyek jangka panjang tapi menekan supaya mulai kerja sebelum kontrak aktif.',
+    ],
+  },
+  {
+    category: 'Saat proses',
+    signs: [
+      'Klien minta refund setelah milestone dirilis tanpa alasan jelas terkait deliverable.',
+      'Komunikasi berubah drastis jadi menekan/tidak sabar begitu kontrak dimulai.',
+      'Diminta menyetujui perubahan scope besar tanpa penyesuaian rate atau timeline.',
+    ],
+  },
+]
+
 export const proposalTemplate = `Hi [Client name],
 
 I noticed [specific problem from the brief]. The main risk here is [short diagnosis].
@@ -1173,7 +1202,7 @@ export function calculateProgress(progress: Record<string, boolean>) {
 
 if (import.meta.env.DEV) {
   console.assert(new Set(allLessonIds).size === allLessonIds.length, 'Lesson IDs must be unique')
-  console.assert(allLessonIds.length === 22, 'Curriculum must contain 22 lessons')
+  console.assert(allLessonIds.length === 28, 'Curriculum must contain 28 lessons')
   console.assert(calculateProgress({}).percentage === 0, 'Empty progress must be 0%')
   console.assert(calculateProgress(Object.fromEntries(allLessonIds.map((id) => [id, true]))).percentage === 100, 'Full progress must be 100%')
 }

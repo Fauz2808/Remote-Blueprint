@@ -26,6 +26,7 @@ import {
   curriculum,
   officialResources,
   proposalTemplate,
+  redFlags,
   sanitizeProgress,
   totalMinutes,
 } from './data/curriculum'
@@ -306,6 +307,21 @@ export default function App() {
               <div><dt>Minimal project rate (quote ke klien)</dt><dd>{rateDraft.minProjectRate > 0 ? `US$${rateDraft.minProjectRate.toFixed(0)} untuk project setara 10 jam kerja — fee Upwork dipotong dari angka ini, bukan ditambah di luar` : 'Lengkapi input di atas dulu.'}</dd></div>
             </dl>
           </div>
+        </section>
+        <section className="labs-resource resource-list">
+          <p className="eyebrow">Resource 05</p>
+          <h3><ShieldCheck size={17} /> Red flag checklist</h3>
+          <p className="optimizer-intro">Periksa job dan klien sebelum apply atau sebelum kontrak dimulai. Satu red flag bukan berarti otomatis skip — tapi tiga atau lebih dari satu klien layak dipertimbangkan ulang.</p>
+          {redFlags.map((group) => (
+            <div key={group.category} className="redflag-group">
+              <h4>{group.category}</h4>
+              <ul>
+                {group.signs.map((sign) => (
+                  <li key={sign}>{sign}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </section>
       </main>
       ) : (
