@@ -3,6 +3,7 @@ import type { FormEvent } from 'react'
 import {
   ArrowRight,
   BookOpen,
+  BriefcaseBusiness,
   Check,
   CheckCircle2,
   ChevronRight,
@@ -17,6 +18,7 @@ import {
   ShieldCheck,
   Sparkles,
   Target,
+  WandSparkles,
   X,
 } from 'lucide-react'
 import {
@@ -54,6 +56,7 @@ export default function App() {
   const [mobileNav, setMobileNav] = useState(false)
   const [showVault, setShowVault] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [profileInputs, setProfileInputs] = useState({ niche: '', client: '', problem: '', skills: '', proof: '', rate: '' })
 
   const stats = calculateProgress(progress)
   const activePhase = curriculum.find((phase) => phase.lessons.some((lesson) => lesson.id === activeLessonId)) ?? curriculum[0]
@@ -61,6 +64,14 @@ export default function App() {
   const orderedLessons = curriculum.flatMap((phase) => phase.lessons)
   const activeIndex = orderedLessons.findIndex((lesson) => lesson.id === activeLesson.id)
   const nextLesson = orderedLessons[activeIndex + 1]
+  const profileDraft = useMemo(() => {
+    const skills = profileInputs.skills.split(',').map((skill) => skill.trim()).filter(Boolean)
+    const headline = [profileInputs.niche, skills.slice(0, 2).join(' & ')].filter(Boolean).join(' | ')
+    const overview = profileInputs.client || profileInputs.problem
+      ? `I help ${profileInputs.client || '[target client]'} solve ${profileInputs.problem || '[specific problem]'} using ${skills.slice(0, 3).join(', ') || '[relevant skills]'}. ${profileInputs.proof ? `Recent proof: ${profileInputs.proof}.` : 'Add one relevant, verifiable result here.'}`
+      : ''
+    return { headline, overview, skills }
+  }, [profileInputs])
 
   useEffect(() => {
     localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress))
@@ -108,10 +119,10 @@ export default function App() {
     return (
       <main className="login-shell">
         <section className="login-story" aria-labelledby="login-title">
-          <a className="wordmark wordmark-light" href="#login-title" aria-label="Remote Blueprint">
+          <div className="wordmark wordmark-light" aria-label="Remote Blueprint">
             <span className="wordmark-mark">RB</span>
             <span>Remote Blueprint</span>
-          </a>
+          </div>
           <div className="login-copy">
             <p className="eyebrow">Field guide 01 — Upwork</p>
             <h1 id="login-title">Skill sudah ada. Sekarang bangun sistem untuk menang.</h1>
@@ -119,7 +130,7 @@ export default function App() {
           </div>
           <div className="login-proof">
             <div><strong>4</strong><span>fase terarah</span></div>
-            <div><strong>16</strong><span>lesson praktis</span></div>
+            <div><strong>{stats.total}</strong><span>lesson praktis</span></div>
             <div><strong>{totalMinutes}</strong><span>menit estimasi</span></div>
           </div>
         </section>
@@ -276,6 +287,30 @@ export default function App() {
               {officialResources.map((resource) => (
                 <a key={resource.url} href={resource.url} target="_blank" rel="noreferrer"><span>{resource.label}</span><ExternalLink size={15} /></a>
               ))}
+            </div>
+            <div className="optimizer-lab">
+              <div className="optimizer-heading">
+                <div><p className="eyebrow">Resource 02</p><h3><WandSparkles size={18} /> Profile Optimization Lab</h3></div>
+                <span>Diproses lokal · tanpa scraping</span>
+              </div>
+              <p className="optimizer-intro">Rangkai positioning dari niche, masalah klien, skill, dan bukti milikmu sendiri. Gunakan benchmark pasar sebagai referensi, bukan bahan salin-tempel.</p>
+              <div className="optimizer-form">
+                <label>Niche atau role<input value={profileInputs.niche} onChange={(event) => setProfileInputs({ ...profileInputs, niche: event.target.value })} placeholder="Contoh: SaaS UX Designer" /></label>
+                <label>Target klien<input value={profileInputs.client} onChange={(event) => setProfileInputs({ ...profileInputs, client: event.target.value })} placeholder="Contoh: early-stage SaaS teams" /></label>
+                <label>Masalah utama<input value={profileInputs.problem} onChange={(event) => setProfileInputs({ ...profileInputs, problem: event.target.value })} placeholder="Contoh: confusing onboarding flows" /></label>
+                <label>Skill utama<input value={profileInputs.skills} onChange={(event) => setProfileInputs({ ...profileInputs, skills: event.target.value })} placeholder="Figma, UX Research, Prototyping" /></label>
+                <label className="optimizer-wide">Bukti hasil<input value={profileInputs.proof} onChange={(event) => setProfileInputs({ ...profileInputs, proof: event.target.value })} placeholder="Contoh: reduced onboarding drop-off by 18%" /></label>
+                <label>Benchmark rate<input value={profileInputs.rate} onChange={(event) => setProfileInputs({ ...profileInputs, rate: event.target.value })} placeholder="$25–$35/hour" /></label>
+              </div>
+              <div className="profile-preview">
+                <div className="profile-preview-title"><BriefcaseBusiness size={17} /><span>Profile draft</span></div>
+                <dl>
+                  <div><dt>Headline</dt><dd>{profileDraft.headline || 'Isi niche dan skill untuk membuat headline.'}</dd></div>
+                  <div><dt>Overview opening</dt><dd>{profileDraft.overview || 'Isi target klien dan masalah utama untuk membuat opening.'}</dd></div>
+                  <div><dt>Skills</dt><dd>{profileDraft.skills.join(' · ') || 'Belum ada skill dipilih.'}</dd></div>
+                  <div><dt>Rate reference</dt><dd>{profileInputs.rate || 'Bandingkan median niche, lalu sesuaikan dengan bukti dan pengalaman.'}</dd></div>
+                </dl>
+              </div>
             </div>
           </section>
         </div>

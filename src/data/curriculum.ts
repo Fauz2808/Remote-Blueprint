@@ -35,6 +35,14 @@ export const curriculum: Phase[] = [
         actions: ['Isi riwayat kerja, pendidikan, bahasa, dan availability.', 'Pastikan judul, rate, lokasi, dan kategori konsisten.', 'Periksa indikator kelengkapan profil sebelum lanjut.'],
       },
       {
+        id: 'market-benchmark',
+        title: 'Benchmark pasar tanpa meniru profil',
+        duration: '25 menit',
+        summary: 'Data profil dan job yang relevan membantu memilih keyword, rate, serta bukti yang dicari pasar—tanpa menyalin kompetitor.',
+        outcome: 'Punya benchmark niche berisi pola headline, skill, rate, dan tipe project yang sering muncul.',
+        actions: ['Cari 10–15 profil freelancer sukses dalam niche yang sama lewat pencarian resmi Upwork.', 'Catat keyword dan skill yang berulang, lalu kelompokkan berdasarkan masalah klien.', 'Bandingkan rentang rate dan tipe project; gunakan median sebagai referensi, bukan angka wajib.', 'Pilih pola yang sesuai bukti pengalamanmu. Jangan menyalin headline atau overview orang lain.'],
+      },
+      {
         id: 'headshot',
         title: 'Bangun first impression profesional',
         duration: '8 menit',
