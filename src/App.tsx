@@ -235,7 +235,7 @@ export default function App() {
 
           <section className="outcome-card">
             <div className="outcome-icon"><Target size={21} /></div>
-            <div><span>Outcome lesson</span><strong>{activeLesson.outcome}</strong></div>
+            <div><span>Target hasil</span><strong>{activeLesson.outcome}</strong></div>
           </section>
 
           <section className="action-section">
@@ -244,7 +244,23 @@ export default function App() {
               {activeLesson.actions.map((action, index) => (
                 <li key={action.title}>
                   <span>{String(index + 1).padStart(2, '0')}</span>
-                  <div className="action-copy"><h3>{action.title}</h3><p>{action.detail}</p></div>
+                  <div className="action-copy">
+                    <h3>{action.title}</h3>
+                    <div className="action-block">
+                      <h4>Kenapa penting</h4>
+                      <p>{action.why}</p>
+                    </div>
+                    <div className="action-block">
+                      <h4>Cara mengerjakan</h4>
+                      <ol className="action-steps">
+                        {action.how.map((step) => <li key={step}>{step}</li>)}
+                      </ol>
+                    </div>
+                    <div className="action-evidence">
+                      <div><h4>Contoh konkret</h4><p>{action.example}</p></div>
+                      <div><h4>Selesai jika</h4><p>{action.doneWhen}</p></div>
+                    </div>
+                  </div>
                 </li>
               ))}
             </ol>
