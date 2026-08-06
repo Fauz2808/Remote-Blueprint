@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "last_updated": "2026-08-07",
+  "brand": {
+    "name": "Remote Blueprint",
+    "tagline": "Sistem, bukan teori.",
+    "faceless": true,
+    "target_audience": "Pekerja skilled (dev, desain, ops, dll) yang mau nambah penghasilan lewat kerja remote/freelance (Upwork-style)",
+    "pillars": ["profil", "bidding", "eksekusi", "scale"],
+    "funnel": "Threads reply-keyword (mayoritas slot) -> engagement. 2 slot high-intent (siang & sore) pakai link langsung ke tracker.",
+    "cta_keywords": ["PROFIL", "PROPOSAL", "BIDDING", "UPDATE", "KOMUNIKASI", "SCALE", "BLUEPRINT"],
+    "cta_link": "https://lynk.id/remote_blueprint/k93nyvv2roje",
+    "cta_link_slots": ["siang", "sore"],
+    "cta_rule": "Slot siang & sore: link langsung di part 8. Slot lain: reply-keyword saja, TANPA link/harga di publik."
+  },
+  "voice_rules": {
+    "do": [
+      "Tone tactical, langsung ke poin, gak dramatis",
+      "Kalimat pendek, konkret, bisa langsung dipraktikkan",
+      "Bahasa Indonesia penuh",
+      "Kata: gagal, berhasil, langsung ke poin, padat"
+    ],
+    "dont": [
+      "Jangan dramatis (hancur/buyar/parah)",
+      "Jangan filler beruntun",
+      "Jangan kalimat kaku ala textbook",
+      "Jangan sebut harga di publik",
+      "Jangan pakai nama platform (Upwork) di lockup/branding permanen — boleh disebut di isi konten sebagai konteks kerja"
+    ]
+  },
+  "format": {
+    "thread_parts": 8,
+    "structure": "Bagian 1 = hook, Bagian 2-7 = value taktis, Bagian 8 = CTA (reply-keyword ATAU link sesuai slot)",
+    "slots": {
+      "pagi": {"time": "08:08", "angle": "relatable / pain point"},
+      "siang": {"time": "12:08", "angle": "edukatif / tips — CTA link"},
+      "sore": {"time": "16:08", "angle": "edukatif / tips — CTA link"},
+      "sore2": {"time": "18:08", "angle": "engagement / diskusi"},
+      "malam": {"time": "20:08", "angle": "value / closing hari"}
+    }
+  },
+  "performance_insights": {
+    "what_works": [],
+    "what_doesnt_work": [],
+    "angle_history": [],
+    "eval_history": []
+  },
+  "daily_log": []
+}

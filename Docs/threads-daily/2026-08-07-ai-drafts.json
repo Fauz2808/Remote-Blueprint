@@ -1,62 +1,17 @@
 [
   {
-    "slot": "pagi",
-    "time_wib": "08:08",
+    "slot": "sore2",
+    "time_wib": "18:08",
     "threads_topic": "Profil Freelance",
     "parts": [
-      "Klien di Upwork buka profil kamu, terus skip dalam 3 detik. Bukan karena skill kamu kurang. Karena profil kamu gagal jawab 1 pertanyaan: kenapa saya harus percaya orang ini?",
-      "Klien scan profil pakai pola tetap: foto, judul, 2 baris pertama overview, baru portofolio. Kalau 4 titik ini gak nunjukin hasil konkret, mereka pindah ke profil lain.",
-      "Foto profil generik dan judul generik kayak 'Full Stack Developer' bikin kamu keliatan sama kayak ratusan profil lain yang udah mereka lewatin.",
-      "Judul yang kerja nyebutin hasil + niche. Bukan 'Full Stack Developer', tapi 'Bangun Dashboard Internal buat Startup B2B dalam 2 Minggu'.",
-      "Overview yang kerja: 2 baris pertama jawab masalah klien, bukan cerita perjalanan kamu jadi developer. Sisanya baru bukti dan cara kerja kamu.",
-      "Portofolio yang kerja bukan showcase semua project yang pernah kamu kerjain. Pilih 3 yang paling relevan sama niche yang mau kamu ambil job-nya.",
-      "Cek profil kamu sekarang dari sudut pandang klien: 3 detik pertama, apa yang keliatan? Kalau jawabannya gak jelas, itu yang bikin proposal kamu susah dibuka.",
-      "Kalau kamu mau bedah profil kamu bareng dan langsung dapet perbaikan konkret, reply 'PROFIL' di bawah."
-    ]
-  },
-  {
-    "slot": "siang",
-    "time_wib": "12:08",
-    "threads_topic": "Strategi Bidding Freelance",
-    "parts": [
-      "Proposal yang bikin klien percaya sebelum baca portofolio itu ada 3 sinyal. Kalau ketiganya gak ada, portofolio sebagus apapun gak kebaca.",
-      "Sinyal 1: kamu sebut detail spesifik dari job post mereka di kalimat pertama. Ini bukti kamu baca beneran, bukan kirim template ke semua job.",
-      "Sinyal 2: kamu kasih 1 insight atau pendekatan konkret buat masalah mereka, bukan cuma bilang 'saya bisa kerjakan ini'.",
-      "Sinyal 3: kamu tutup dengan pertanyaan spesifik terkait project mereka, bukan basa-basi 'looking forward to hear from you'.",
-      "Pertanyaan spesifik bikin klien mulai mikir sama kamu soal project itu, secara mental mereka udah mulai kerja bareng kamu sebelum interview.",
-      "Proposal tanpa 3 sinyal ini kebaca generik walau isinya sebenernya benar. Klien udah lihat ratusan proposal generik sebelum sampe ke punya kamu.",
-      "Coba cek proposal terakhir yang kamu kirim. Ada berapa dari 3 sinyal ini yang beneran ada? Kalau kurang dari 3, itu alasan kenapa gak dibalas.",
-      "Kalau mau template struktur proposal yang pakai 3 sinyal ini, reply 'PROPOSAL' di bawah."
-    ]
-  },
-  {
-    "slot": "sore",
-    "time_wib": "16:08",
-    "threads_topic": "Strategi Bidding Freelance",
-    "parts": [
-      "Connects habis, job gak dapet-dapet. Bukan karena kompetisi ketat. Karena bidding ke job yang salah dan proposal yang salah bentuk.",
-      "Kesalahan 1: bid ke job yang baru posting 2 menit sebelum baca detailnya benar-benar. Buru-buru submit generik cuma buat kejar urutan.",
-      "Kesalahan 2: bid ke semua job yang match keyword skill kamu, tanpa filter budget, red flag klien, atau kecocokan niche.",
-      "Kesalahan 3: kirim proposal yang sama persis ke banyak job, cuma ganti nama klien. Klien bisa rasain proposal template dari kalimat pertama.",
-      "Fix-nya: kurangi jumlah bid, naikkan kualitas tiap bid. 5 proposal tertarget lebih efektif dari 20 proposal template yang disebar asal.",
-      "Sebelum bid, cek 3 hal: budget realistis, deskripsi jelas, history klien bagus. Kalau 3 ini gak terpenuhi, skip aja.",
-      "Connects kamu lebih mahal dari waktu yang kebuang di job yang salah. Filter dulu, baru bid — bukan sebaliknya.",
-      "Kalau kamu mau checklist lengkap filter job + template proposal + sistem 4 fase ini dalam 1 tracker yang bisa langsung dipakai, ada di sini: https://lynk.id/remote_blueprint/k93nyvv2roje"
-    ]
-  },
-  {
-    "slot": "malam",
-    "time_wib": "20:08",
-    "threads_topic": "Komunikasi Klien Freelance",
-    "parts": [
-      "Klien gak butuh kamu kerja diam-diam sampai selesai. Mereka butuh tahu progress-nya jalan. Ini yang bedain freelancer amatir dari yang dipercaya.",
-      "Amatir update cuma pas ditanya, atau pas selesai total. Klien nunggu dalam gelap, mulai ragu sama kerjaan yang lagi berjalan.",
-      "Yang dipercaya kasih update singkat di titik-titik kunci, walau progress belum selesai. Contoh: sudah selesai bagian X, lanjut ke Y, on track sesuai timeline.",
-      "Update gak perlu panjang. Cukup 2-3 kalimat: apa yang udah selesai, apa yang lagi dikerjain, ada blocker atau enggak.",
-      "Kalau ada blocker, sampaikan secepat mungkin dengan opsi solusi. Jangan tunggu deadline buat ngasih tau ada masalah.",
-      "Pola ini bikin klien ngerasa in control walau mereka gak ikut campur teknis. Itu yang bikin mereka nyaman kasih project lanjutan ke kamu.",
-      "Coba hitung: project terakhir kamu, berapa kali kamu update klien tanpa diminta? Kalau nol, itu titik yang paling murah buat diperbaiki.",
-      "Kalau mau template update progress yang gak ribet tapi bikin klien tenang, reply 'UPDATE' di bawah."
+      "Profil freelance kamu isinya daftar skill panjang tapi klien scroll doang terus keluar? Masalahnya bukan skill kurang, tapi profil kamu gak jawab pertanyaan klien: kenapa harus kamu.",
+      "Judul profil jangan cuma \"Web Developer\" atau \"Graphic Designer\". Tulis hasil konkret: \"Bikin landing page yang naikin conversion 20-30% buat brand e-commerce\". Klien cari solusi, bukan gelar.",
+      "Overview jangan mulai dari cerita hidup kamu. Mulai dari masalah yang klien alami, terus posisikan diri kamu sebagai orang yang biasa nyelesain masalah itu. 2 kalimat pertama paling penting, sisanya orang jarang baca habis.",
+      "Portofolio isi 3-5 project paling relevan sama niche yang kamu incer, bukan semua yang pernah dikerjain. Tiap project kasih konteks: masalah klien apa, apa yang kamu lakuin, hasil akhirnya gimana.",
+      "Foto profil pakai wajah jelas, background netral, pencahayaan cukup. Ini kelihatan sepele tapi klien lebih percaya sama profil yang ada wajah manusia jelas dibanding logo atau foto buram.",
+      "Skill tag isi yang emang relevan sama niche kamu, jangan asal centang semua biar kelihatan serba bisa. Profil yang fokus di 1-2 spesialisasi lebih gampang dipercaya dibanding yang jual jasa random.",
+      "Rate awal jangan taruh paling murah biar cepet dapet kerjaan. Klien yang cari harga termurah biasanya juga yang paling ribet. Mending rate wajar tapi hasil kerja konsisten bagus.",
+      "Kalau mau checklist lengkap benerin profil dari judul sampai portofolio, reply PROFIL, nanti aku share."
     ]
   }
 ]
