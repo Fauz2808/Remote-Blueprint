@@ -151,8 +151,8 @@ def schedule_iso(
 def validate_thread(thread: dict, idx: int) -> list[str]:
     errors = []
     parts = thread.get("parts") or []
-    if not thread.get("slot") in ("pagi", "siang", "sore", "malam"):
-        errors.append(f"[{idx}] slot harus pagi/siang/sore/malam")
+    if not thread.get("slot") in ("pagi", "siang", "sore", "sore2", "malam"):
+        errors.append(f"[{idx}] slot harus pagi/siang/sore/sore2/malam")
     if not thread.get("time_wib"):
         errors.append(f"[{idx}] time_wib wajib ada (HH:MM)")
     if len(parts) < MIN_PARTS:
