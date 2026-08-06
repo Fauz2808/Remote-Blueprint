@@ -403,14 +403,13 @@ export default function App() {
                       <div className="action-title-row"><h3>{action.title}</h3></div>
                       <div className="layered-action">
                         <p className="action-summary">{action.why}</p>
-                        <details className="action-guide">
-                          <summary>Panduan langkah demi langkah</summary>
+                        <div className="action-guide">
                           <div className="action-guide-body">
                             <h4>Cara mengerjakan</h4>
                             <ol className="action-steps">{action.how.map((step) => <li key={step}>{step}</li>)}</ol>
                             <div className="action-example"><h4>Contoh konkret</h4><p>{action.example}</p></div>
                           </div>
-                        </details>
+                        </div>
                         <div className="action-done-when"><h4>Selesai jika</h4><p>{action.doneWhen}</p></div>
                       </div>
                     </div>

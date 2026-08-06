@@ -149,34 +149,10 @@ button { color: inherit; }
 .action-evidence > div:last-child { border-color: #d5dfbc; background: var(--mint-soft); }
 .action-summary { max-width: 720px; margin-top: 8px !important; }
 .action-guide { margin-top: 14px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); }
-.action-guide summary { min-height: 48px; padding: 0 14px; display: flex; align-items: center; cursor: pointer; color: var(--pine); font-size: 12px; font-weight: 700; list-style: none; }
-.action-guide summary::-webkit-details-marker { display: none; }
-.action-guide summary::after { content: '+'; margin-left: auto; font-size: 18px; }
-.action-guide[open] summary::after { content: '−'; }
-.action-guide[open] summary { border-bottom: 1px solid var(--line); }
 .action-guide-body { padding: 16px; }
 .action-example { margin-top: 16px; padding: 14px; border-radius: 8px; background: var(--paper); }
 .action-done-when { margin-top: 12px; padding: 13px 14px; border: 1px solid #d5dfbc; border-radius: 9px; background: var(--mint-soft); }
 .action-done-when p { color: #34463c; font-size: 12px; line-height: 1.6; }
-.skill-map-summary { max-width: 720px; }
-.skill-map-flow { margin: 18px 0; padding: 14px; display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; border: 1px solid #d5dfbc; border-radius: 10px; background: var(--mint-soft); }
-.skill-map-flow div { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--pine); }
-.skill-map-flow strong { font: 700 11px 'Space Grotesk'; }
-
-.skill-path-picker { padding: 16px 16px 0; }
-.skill-path-picker > span { color: var(--pine); font: 700 10px 'JetBrains Mono'; text-transform: uppercase; }
-.skill-path-picker > div { margin-top: 9px; display: flex; flex-wrap: wrap; gap: 7px; }
-.skill-path-picker button { min-height: 40px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 7px; cursor: pointer; background: var(--paper); color: var(--ink-soft); font-size: 11px; font-weight: 700; }
-.skill-path-picker button.active { border-color: var(--pine); background: var(--pine); color: #fff; }
-.skill-path-steps { padding: 16px; }
-.skill-example-card { margin: 0 16px 16px; display: grid; grid-template-columns: repeat(2,1fr); border: 1px solid #d5dfbc; border-radius: 8px; background: var(--mint-soft); }
-.skill-example-card div { padding: 12px; display: grid; gap: 4px; border-bottom: 1px solid #d5dfbc; }
-.skill-example-card div:nth-child(odd) { border-right: 1px solid #d5dfbc; }
-.skill-example-card div:nth-last-child(-n+2) { border-bottom: 0; }
-.skill-example-card span { color: var(--pine); font: 700 9px 'JetBrains Mono'; text-transform: uppercase; }
-.skill-example-card strong { color: #34463c; font-size: 11px; line-height: 1.5; }
-.skill-map-done { margin-top: 14px; padding: 14px; border: 1px solid #d5dfbc; border-radius: 9px; background: var(--mint-soft); }
-.skill-map-done ul { margin: 8px 0 0; padding-left: 18px; color: #34463c; font-size: 12px; line-height: 1.7; }
 .lesson-source { margin-top: 18px; padding: 13px 14px; display: flex; align-items: center; justify-content: space-between; gap: 16px; color: var(--pine); border: 1px solid #d5dfbc; border-radius: 8px; background: var(--mint-soft); text-decoration: none; font-size: 11px; font-weight: 700; }
 .lesson-source span { display: flex; align-items: center; gap: 8px; }
 .lesson-source:hover { border-color: var(--pine); }
@@ -272,13 +248,6 @@ button { color: inherit; }
   .action-check { width: 32px; height: 32px; }
   .action-title-row { align-items: start; flex-direction: column; }
   .action-evidence { grid-template-columns: 1fr; }
-  .skill-map-flow { grid-template-columns: 1fr; }
-  .skill-map-flow div { min-height: 32px; }
-  .skill-map-flow svg { transform: rotate(90deg); }
-  .skill-path-picker button { min-height: 44px; flex: 1 1 100%; }
-  .skill-example-card { grid-template-columns: 1fr; }
-  .skill-example-card div, .skill-example-card div:nth-child(odd), .skill-example-card div:nth-last-child(-n+2) { border-right: 0; border-bottom: 1px solid #d5dfbc; }
-  .skill-example-card div:last-child { border-bottom: 0; }
   .inline-template { align-items: stretch; flex-direction: column; }
   .lesson-footer { align-items: stretch; flex-direction: column; }
   .next-button { max-width: none; order: -1; text-align: left; }
