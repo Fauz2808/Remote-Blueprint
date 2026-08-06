@@ -115,7 +115,7 @@ def rebuild_payload(schedule: dict, new_target_iso: str) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", help="YYYY-MM-DD (default: today WIB)")
-    parser.add_argument("--slot", required=True, choices=["pagi", "siang", "sore"])
+    parser.add_argument("--slot", required=True, choices=["pagi", "siang", "sore", "malam"])
     args = parser.parse_args()
 
     date_str = args.date or datetime.now(WIB).date().isoformat()

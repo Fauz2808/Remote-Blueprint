@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "date": "2026-08-07",
+    "slot": "pagi",
+    "time_wib": "08:08",
+    "threads_topic": "Profil Freelance",
+    "schedule_id": "6a7499cce5f178985ee0e43d",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-07",
+    "slot": "siang",
+    "time_wib": "12:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "schedule_id": "6a7499ccdf024ee4e49d8b99",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-07",
+    "slot": "sore",
+    "time_wib": "16:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "schedule_id": "6a7499ccdf024ee4e49d8ba5",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-07",
+    "slot": "malam",
+    "time_wib": "20:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "schedule_id": "6a7499ccdf024ee4e49d8bb0",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-08",
+    "slot": "pagi",
+    "time_wib": "08:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "schedule_id": "6a7499d1df024ee4e49d8c2f",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-08",
+    "slot": "siang",
+    "time_wib": "12:08",
+    "threads_topic": "Scale Freelance",
+    "schedule_id": "6a7499d1e5f178985ee0e4b7",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-08",
+    "slot": "sore",
+    "time_wib": "16:08",
+    "threads_topic": "Remote Blueprint",
+    "schedule_id": "6a7499d1df024ee4e49d8c3f",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  }
+]
