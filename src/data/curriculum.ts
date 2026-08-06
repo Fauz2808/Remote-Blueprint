@@ -46,10 +46,17 @@ export const curriculum: Phase[] = [
         actions: [
           action({
             title: 'Petakan modal yang sudah dimiliki',
-            why: 'Skill yang berangkat dari pengalaman nyata lebih cepat dijual daripada memilih profesi hanya karena terlihat populer.',
-            how: ['Daftar pekerjaan yang pernah kamu lakukan di kantor, kuliah, organisasi, bisnis, atau project pribadi.', 'Catat software, metode, dan jenis masalah yang sudah bisa kamu tangani tanpa selalu dibimbing.', 'Tandai pekerjaan yang hasil akhirnya dapat dikirim sebagai file, sistem, laporan, atau layanan terukur.', 'Pilih tiga kandidat skill yang paling kuat berdasarkan pengalaman dan minat latihan jangka panjang.'],
-            example: 'Pengalaman mengelola Instagram kantor menghasilkan kandidat skill content planning, copywriting, dan short-form video editing—bukan sekadar “social media”.',
-            doneWhen: 'Ada tiga kandidat skill, masing-masing disertai pengalaman nyata, tools yang dikuasai, dan contoh deliverable.',
+            why: 'Sebelum memilih pekerjaan di Upwork, kenali dulu kemampuan yang sudah kamu gunakan dalam pekerjaan, kuliah, organisasi, atau project pribadi. Skill yang sudah dipraktikkan lebih mudah dijual karena kamu memahami prosesnya dan punya hasil yang bisa dijadikan bukti. Fokus tahap ini bukan mencari skill paling populer, tetapi menemukan titik awal yang paling realistis.',
+            how: [
+              'Uraikan pengalaman menjadi tugas nyata. Jangan hanya menulis "admin" atau "social media". Tulis pekerjaan spesifik seperti mengolah spreadsheet, membuat kalender konten, menulis caption, mendesain feed, atau mengedit video.',
+              'Catat skill, tools, dan masalah yang diselesaikan. Gunakan pola: kondisi awal → tindakan → hasil. Contoh: jadwal posting tidak konsisten → membuat kalender konten di Google Sheets → tim rutin menerbitkan empat konten per minggu.',
+              'Tambahkan bukti atau metrik. Gunakan angka yang dapat dibuktikan: engagement naik, waktu kerja berkurang, penjualan bertambah, atau jumlah output selesai. Jika tidak ada persentase, tulis ukuran lain seperti "30 desain per bulan". Jangan mengarang data.',
+              'Kelompokkan tugas menjadi maksimal tiga kandidat skill. Beri nilai 1-5 untuk pengalaman, kualitas bukti, minat belajar, dan permintaan pasar. Pilih skill dengan gabungan nilai paling kuat—bukan hanya yang sedang populer.',
+              'Jika skill masih dasar, bandingkan hasilmu dengan 3-5 portfolio profesional. Temukan satu gap utama—kualitas, tools, kecepatan, atau komunikasi—lalu perbaiki melalui latihan dan pengulangan project.',
+              'Jika belum punya skill, pilih satu bidang berdasarkan minat, lalu persempit menjadi output spesifik. Contoh: dari "desain" menjadi desain carousel; dari "teknologi" menjadi landing page atau QA website. Pelajari dasar, lalu buat 2-3 concept project dengan brief menyerupai kebutuhan klien.',
+            ],
+            example: 'Dina mengelola Instagram kantor. Tugasnya: membuat kalender konten, menulis caption, mendesain di Canva, mengedit Reels, dan membaca Instagram Insights. Dalam tiga bulan, frekuensi posting naik dari 2 menjadi 5 kali per minggu dan engagement naik dari 2% menjadi 3,2%. Dari bukti tersebut, skill terkuat Dina adalah social media management. Jika belum punya pengalaman, ia bisa memilih desain carousel, mempelajari dasarnya, lalu membuat tiga concept project yang diberi label sebagai project latihan.',
+            doneWhen: 'Kamu memiliki maksimal tiga kandidat skill. Setiap kandidat dilengkapi tugas yang pernah dilakukan, tools, masalah yang diselesaikan, bukti atau metrik, serta contoh hasil yang boleh ditampilkan. Jika belum punya skill, kamu sudah memilih satu output spesifik dan mempunyai rencana belajar serta 2-3 concept project.',
           }),
           action({
             title: 'Validasi kebutuhan lewat job nyata',
