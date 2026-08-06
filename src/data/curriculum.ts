@@ -1190,29 +1190,42 @@ Best,
 [Your name]`
 
 export const allLessonIds = curriculum.flatMap((phase) => phase.lessons.map((lesson) => lesson.id))
+export const actionId = (lessonId: string, actionIndex: number) => `${lessonId}::${actionIndex}`
+export const allActionIds = curriculum.flatMap((phase) => phase.lessons.flatMap((lesson) => lesson.actions.map((_, index) => actionId(lesson.id, index))))
 
 export const totalMinutes = curriculum.reduce(
   (total, phase) => total + phase.lessons.reduce((phaseTotal, lesson) => phaseTotal + Number.parseInt(lesson.duration), 0),
   0,
 )
 
-export function sanitizeProgress(value: unknown): Record<string, boolean> {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
-  return Object.fromEntries(
-    Object.entries(value).filter(([id, done]) => allLessonIds.includes(id) && typeof done === 'boolean'),
-  )
+export function lessonIsComplete(lesson: Lesson, progress: Record<string, boolean>) {
+  return lesson.actions.every((_, index) => progress[actionId(lesson.id, index)])
 }
 
-export function calculateProgress(progress: Record<string, boolean>) {
-  const completed = allLessonIds.filter((id) => progress[id]).length
-  return { completed, total: allLessonIds.length, percentage: Math.round((completed / allLessonIds.length) * 100) }
+export function sanitizeActionProgress(value: unknown): Record<string, boolean> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
+  const source = value as Record<string, unknown>
+  const migrated: Record<string, boolean> = {}
+  curriculum.forEach((phase) => phase.lessons.forEach((lesson) => {
+    lesson.actions.forEach((_, index) => {
+      const id = actionId(lesson.id, index)
+      if (source[id] === true || source[lesson.id] === true) migrated[id] = true
+    })
+  }))
+  return migrated
+}
+
+export function calculateActionProgress(progress: Record<string, boolean>) {
+  const completed = allActionIds.filter((id) => progress[id]).length
+  return { completed, total: allActionIds.length, percentage: Math.round((completed / allActionIds.length) * 100) }
 }
 
 if (import.meta.env.DEV) {
   console.assert(new Set(allLessonIds).size === allLessonIds.length, 'Lesson IDs must be unique')
+  console.assert(new Set(allActionIds).size === allActionIds.length, 'Action IDs must be unique')
   console.assert(allLessonIds.length === 28, 'Curriculum must contain 28 lessons')
-  console.assert(calculateProgress({}).percentage === 0, 'Empty progress must be 0%')
-  console.assert(calculateProgress(Object.fromEntries(allLessonIds.map((id) => [id, true]))).percentage === 100, 'Full progress must be 100%')
+  console.assert(calculateActionProgress({}).percentage === 0, 'Empty progress must be 0%')
+  console.assert(calculateActionProgress(Object.fromEntries(allActionIds.map((id) => [id, true]))).percentage === 100, 'Full progress must be 100%')
 }
 
 export default curriculum

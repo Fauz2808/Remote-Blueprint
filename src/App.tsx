@@ -22,12 +22,14 @@ import {
   X,
 } from 'lucide-react'
 import {
-  calculateProgress,
+  actionId,
+  calculateActionProgress,
   curriculum,
+  lessonIsComplete,
   officialResources,
   proposalTemplate,
   redFlags,
-  sanitizeProgress,
+  sanitizeActionProgress,
   totalMinutes,
 } from './data/curriculum'
 import type { Lesson } from './data/curriculum'
@@ -38,14 +40,14 @@ const ACCESS_KEY = 'remote-blueprint-access-v1'
 
 function readProgress() {
   try {
-    return sanitizeProgress(JSON.parse(localStorage.getItem(PROGRESS_KEY) ?? '{}'))
+    return sanitizeActionProgress(JSON.parse(localStorage.getItem(PROGRESS_KEY) ?? '{}'))
   } catch {
     return {}
   }
 }
 
 function firstIncomplete(progress: Record<string, boolean>) {
-  return curriculum.flatMap((phase) => phase.lessons).find((lesson) => !progress[lesson.id])?.id ?? curriculum[0].lessons[0].id
+  return curriculum.flatMap((phase) => phase.lessons).find((lesson) => !lessonIsComplete(lesson, progress))?.id ?? curriculum[0].lessons[0].id
 }
 
 export default function App() {
@@ -61,12 +63,16 @@ export default function App() {
   const [rateInputs, setRateInputs] = useState({ livingCost: '', otherCosts: '', savingsPercent: '20', billableHours: '20', platformFeePercent: '10' })
   const [skillPath, setSkillPath] = useState<'ready' | 'basic' | 'new'>('ready')
 
-  const stats = calculateProgress(progress)
+  const stats = calculateActionProgress(progress)
   const activePhase = curriculum.find((phase) => phase.lessons.some((lesson) => lesson.id === activeLessonId)) ?? curriculum[0]
   const activeLesson = activePhase.lessons.find((lesson) => lesson.id === activeLessonId) ?? activePhase.lessons[0]
   const orderedLessons = curriculum.flatMap((phase) => phase.lessons)
   const activeIndex = orderedLessons.findIndex((lesson) => lesson.id === activeLesson.id)
   const nextLesson = orderedLessons[activeIndex + 1]
+  const activeLessonDone = lessonIsComplete(activeLesson, progress)
+  const activeActionCount = activeLesson.actions.filter((_, index) => progress[actionId(activeLesson.id, index)]).length
+  const prerequisite = curriculum[0]
+  const prerequisiteReady = prerequisite.lessons.filter((lesson) => lessonIsComplete(lesson, progress)).length
   const profileDraft = useMemo(() => {
     const skills = profileInputs.skills.split(',').map((skill) => skill.trim()).filter(Boolean)
     const headline = [profileInputs.niche, skills.slice(0, 2).join(' & ')].filter(Boolean).join(' | ')
@@ -96,7 +102,7 @@ export default function App() {
   }, [progress])
 
   const phaseProgress = useMemo(
-    () => Object.fromEntries(curriculum.map((phase) => [phase.id, phase.lessons.filter((lesson) => progress[lesson.id]).length])),
+    () => Object.fromEntries(curriculum.map((phase) => [phase.id, phase.lessons.filter((lesson) => lessonIsComplete(lesson, progress)).length])),
     [progress],
   )
 
@@ -118,7 +124,17 @@ export default function App() {
   }
 
   const toggleLesson = (lesson: Lesson = activeLesson) => {
-    setProgress((current) => ({ ...current, [lesson.id]: !current[lesson.id] }))
+    setProgress((current) => {
+      const complete = lessonIsComplete(lesson, current)
+      const next = { ...current }
+      lesson.actions.forEach((_, index) => { next[actionId(lesson.id, index)] = !complete })
+      return next
+    })
+  }
+
+  const toggleAction = (lesson: Lesson, index: number) => {
+    const id = actionId(lesson.id, index)
+    setProgress((current) => ({ ...current, [id]: !current[id] }))
   }
 
   const resetProgress = () => {
@@ -199,7 +215,7 @@ export default function App() {
         <div className="sidebar-progress">
           <div className="progress-meta"><span>Blueprint progress</span><strong>{stats.percentage}%</strong></div>
           <div className="progress-track" aria-label={`${stats.percentage}% selesai`}><span style={{ width: `${stats.percentage}%` }} /></div>
-          <p>{stats.completed} dari {stats.total} lesson selesai</p>
+          <p>{stats.completed} dari {stats.total} action selesai</p>
         </div>
 
         <nav className="phase-nav">
@@ -217,8 +233,8 @@ export default function App() {
                   onClick={() => chooseLesson(lesson.id)}
                   aria-current={activeLesson.id === lesson.id ? 'page' : undefined}
                 >
-                  <span className={`lesson-state ${progress[lesson.id] ? 'lesson-state-done' : ''}`}>
-                    {progress[lesson.id] && <Check size={11} strokeWidth={3} />}
+                  <span className={`lesson-state ${lessonIsComplete(lesson, progress) ? 'lesson-state-done' : ''}`}>
+                    {lessonIsComplete(lesson, progress) && <Check size={11} strokeWidth={3} />}
                   </span>
                   <span>{lesson.title}</span>
                 </button>
@@ -342,77 +358,101 @@ export default function App() {
             <p>{activeLesson.summary}</p>
           </header>
 
+          {activePhase.id === 'prerequisite' && (
+            <section className="fast-track" aria-labelledby="fast-track-title">
+              <div className="fast-track-heading">
+                <div><p className="eyebrow">Fast track · 2 menit</p><h2 id="fast-track-title">Sudah berpengalaman? Periksa kesiapanmu.</h2></div>
+                <button className="button button-secondary" onClick={() => {
+                  setProgress((current) => {
+                    const next = { ...current }
+                    prerequisite.lessons.forEach((lesson) => lesson.actions.forEach((_, index) => { next[actionId(lesson.id, index)] = true }))
+                    return next
+                  })
+                }}>Tandai semua siap</button>
+              </div>
+              <p className="fast-track-intro">Centang hanya bagian yang memang sudah kamu kuasai. Lesson terkait akan langsung selesai; sisanya tetap menjadi panduanmu. <strong>{prerequisiteReady}/6 siap</strong></p>
+              <div className="readiness-grid">
+                {prerequisite.lessons.map((lesson, index) => {
+                  const ready = lessonIsComplete(lesson, progress)
+                  return (
+                    <button key={lesson.id} className={`readiness-item ${ready ? 'readiness-item-done' : ''}`} onClick={() => toggleLesson(lesson)} aria-pressed={ready}>
+                      <span>{ready ? <Check size={14} strokeWidth={3} /> : null}</span>
+                      <div><strong>{['Skill siap dijual', 'Bukti kemampuan tersedia', 'English kerja memadai', 'Akun Upwork valid', 'Perangkat dan waktu siap', 'Pembayaran dan administrasi siap'][index]}</strong><small>{lesson.outcome}</small></div>
+                    </button>
+                  )
+                })}
+              </div>
+            </section>
+          )}
+
           <section className="outcome-card">
             <div className="outcome-icon"><Target size={21} /></div>
             <div><span>Target hasil</span><strong>{activeLesson.outcome}</strong></div>
           </section>
 
           <section className="action-section">
-            <div className="section-heading"><span>Action checklist</span><em>Ikuti langkahnya, lalu periksa kriteria selesai</em></div>
+            <div className="section-heading"><span>Action checklist</span><em>{activeActionCount}/{activeLesson.actions.length} action selesai</em></div>
             <ol className="action-list">
-              {activeLesson.actions.map((action, index) => (
-                <li key={action.title}>
-                  <span>{String(index + 1).padStart(2, '0')}</span>
-                  <div className="action-copy">
-                    <h3>{action.title}</h3>
-                    {activeLesson.id === 'choose-digital-skill' && index === 0 ? (
-                      <div className="skill-map-pilot">
-                        <p className="skill-map-summary">{action.why}</p>
-                        <div className="skill-map-flow" aria-label="Alur mengubah pengalaman menjadi layanan Upwork">
-                          {['Pengalaman', 'Tugas nyata', 'Bukti hasil', 'Layanan Upwork'].map((label, flowIndex) => (
-                            <div key={label}><strong>{label}</strong>{flowIndex < 3 && <ArrowRight size={15} aria-hidden="true" />}</div>
-                          ))}
-                        </div>
-                        <details className="skill-map-guide">
-                          <summary>Panduan langkah demi langkah</summary>
-                          <div className="skill-path-picker">
-                            <span>Kondisimu sekarang</span>
-                            <div role="group" aria-label="Pilih kondisi skill">
-                              <button className={skillPath === 'ready' ? 'active' : ''} onClick={() => setSkillPath('ready')}>Sudah punya skill</button>
-                              <button className={skillPath === 'basic' ? 'active' : ''} onClick={() => setSkillPath('basic')}>Skill masih dasar</button>
-                              <button className={skillPath === 'new' ? 'active' : ''} onClick={() => setSkillPath('new')}>Belum punya skill</button>
+              {activeLesson.actions.map((action, index) => {
+                const done = Boolean(progress[actionId(activeLesson.id, index)])
+                return (
+                  <li key={action.title} className={done ? 'action-done' : ''}>
+                    <button className="action-check" onClick={() => toggleAction(activeLesson, index)} aria-pressed={done} aria-label={`${done ? 'Batalkan' : 'Tandai'} ${action.title}`}>
+                      {done ? <Check size={15} strokeWidth={3} /> : String(index + 1).padStart(2, '0')}
+                    </button>
+                    <div className="action-copy">
+                      <div className="action-title-row"><h3>{action.title}</h3></div>
+                      {activeLesson.id === 'choose-digital-skill' && index === 0 ? (
+                        <div className="skill-map-pilot">
+                          <p className="skill-map-summary">{action.why}</p>
+                          <div className="skill-map-flow" aria-label="Alur mengubah pengalaman menjadi layanan Upwork">
+                            {['Pengalaman', 'Tugas nyata', 'Bukti hasil', 'Layanan Upwork'].map((label, flowIndex) => (
+                              <div key={label}><strong>{label}</strong>{flowIndex < 3 && <ArrowRight size={15} aria-hidden="true" />}</div>
+                            ))}
+                          </div>
+                          <details className="action-guide skill-map-guide">
+                            <summary>Panduan langkah demi langkah</summary>
+                            <div className="skill-path-picker">
+                              <span>Kondisimu sekarang</span>
+                              <div role="group" aria-label="Pilih kondisi skill">
+                                <button className={skillPath === 'ready' ? 'active' : ''} onClick={() => setSkillPath('ready')}>Sudah punya skill</button>
+                                <button className={skillPath === 'basic' ? 'active' : ''} onClick={() => setSkillPath('basic')}>Skill masih dasar</button>
+                                <button className={skillPath === 'new' ? 'active' : ''} onClick={() => setSkillPath('new')}>Belum punya skill</button>
+                              </div>
                             </div>
+                            <ol className="action-steps skill-path-steps">
+                              {(skillPath === 'ready' ? action.how.slice(0, 4) : skillPath === 'basic' ? [action.how[0], action.how[1], action.how[2], action.how[4]] : [action.how[5]]).map((step) => <li key={step}>{step}</li>)}
+                            </ol>
+                            <div className="skill-example-card">
+                              <div><span>Pekerjaan</span><strong>Kelola Instagram kantor</strong></div>
+                              <div><span>Tugas</span><strong>Konten · Canva · Reels · Insights</strong></div>
+                              <div><span>Bukti</span><strong>Posting 2→5/minggu · Engagement 2%→3,2%</strong></div>
+                              <div><span>Layanan</span><strong>Social Media Management</strong></div>
+                            </div>
+                          </details>
+                          <div className="skill-map-done">
+                            <h4>Selesai jika</h4>
+                            <ul><li>Maksimal tiga kandidat skill dipilih</li><li>Setiap skill punya tugas, tools, dan bukti</li><li>Belum punya skill: ada rencana belajar + 2–3 concept project</li></ul>
                           </div>
-                          <ol className="action-steps skill-path-steps">
-                            {(skillPath === 'ready' ? action.how.slice(0, 4) : skillPath === 'basic' ? [action.how[0], action.how[1], action.how[2], action.how[4]] : [action.how[5]]).map((step) => <li key={step}>{step}</li>)}
-                          </ol>
-                          <div className="skill-example-card">
-                            <div><span>Pekerjaan</span><strong>Kelola Instagram kantor</strong></div>
-                            <div><span>Tugas</span><strong>Konten · Canva · Reels · Insights</strong></div>
-                            <div><span>Bukti</span><strong>Posting 2→5/minggu · Engagement 2%→3,2%</strong></div>
-                            <div><span>Layanan</span><strong>Social Media Management</strong></div>
-                          </div>
-                        </details>
-                        <div className="skill-map-done">
-                          <h4>Selesai jika</h4>
-                          <ul>
-                            <li>Maksimal tiga kandidat skill dipilih</li>
-                            <li>Setiap skill punya tugas, tools, dan bukti</li>
-                            <li>Belum punya skill: ada rencana belajar + 2–3 concept project</li>
-                          </ul>
                         </div>
-                      </div>
-                    ) : (
-                      <>
-                        <div className="action-block">
-                          <h4>Kenapa penting</h4>
-                          <p>{action.why}</p>
+                      ) : (
+                        <div className="layered-action">
+                          <p className="action-summary">{action.why}</p>
+                          <details className="action-guide">
+                            <summary>Panduan langkah demi langkah</summary>
+                            <div className="action-guide-body">
+                              <h4>Cara mengerjakan</h4>
+                              <ol className="action-steps">{action.how.map((step) => <li key={step}>{step}</li>)}</ol>
+                              <div className="action-example"><h4>Contoh konkret</h4><p>{action.example}</p></div>
+                            </div>
+                          </details>
+                          <div className="action-done-when"><h4>Selesai jika</h4><p>{action.doneWhen}</p></div>
                         </div>
-                        <div className="action-block">
-                          <h4>Cara mengerjakan</h4>
-                          <ol className="action-steps">
-                            {action.how.map((step) => <li key={step}>{step}</li>)}
-                          </ol>
-                        </div>
-                        <div className="action-evidence">
-                          <div><h4>Contoh konkret</h4><p>{action.example}</p></div>
-                          <div><h4>Selesai jika</h4><p>{action.doneWhen}</p></div>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </li>
-              ))}
+                      )}
+                    </div>
+                  </li>
+                )
+              })}
             </ol>
             {activeLesson.source && (
               <a className="lesson-source" href={activeLesson.source.url} target="_blank" rel="noreferrer">
@@ -429,9 +469,9 @@ export default function App() {
           )}
 
           <footer className="lesson-footer">
-            <button className={`complete-button ${progress[activeLesson.id] ? 'complete-button-done' : ''}`} onClick={() => toggleLesson()}>
-              {progress[activeLesson.id] ? <CheckCircle2 size={20} /> : <span className="complete-dot" />}
-              {progress[activeLesson.id] ? 'Lesson selesai' : 'Tandai selesai'}
+            <button className={`complete-button ${activeLessonDone ? 'complete-button-done' : ''}`} onClick={() => toggleLesson()}>
+              {activeLessonDone ? <CheckCircle2 size={20} /> : <span className="complete-dot" />}
+              {activeLessonDone ? 'Lesson selesai' : 'Selesaikan semua action'}
             </button>
             {nextLesson ? (
               <button className="next-button" onClick={() => chooseLesson(nextLesson.id)}>
