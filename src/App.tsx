@@ -59,6 +59,7 @@ export default function App() {
   const [copied, setCopied] = useState(false)
   const [profileInputs, setProfileInputs] = useState({ niche: '', client: '', problem: '', skills: '', proof: '', rate: '' })
   const [rateInputs, setRateInputs] = useState({ livingCost: '', otherCosts: '', savingsPercent: '20', billableHours: '20', platformFeePercent: '10' })
+  const [skillPath, setSkillPath] = useState<'ready' | 'basic' | 'new'>('ready')
 
   const stats = calculateProgress(progress)
   const activePhase = curriculum.find((phase) => phase.lessons.some((lesson) => lesson.id === activeLessonId)) ?? curriculum[0]
@@ -354,20 +355,61 @@ export default function App() {
                   <span>{String(index + 1).padStart(2, '0')}</span>
                   <div className="action-copy">
                     <h3>{action.title}</h3>
-                    <div className="action-block">
-                      <h4>Kenapa penting</h4>
-                      <p>{action.why}</p>
-                    </div>
-                    <div className="action-block">
-                      <h4>Cara mengerjakan</h4>
-                      <ol className="action-steps">
-                        {action.how.map((step) => <li key={step}>{step}</li>)}
-                      </ol>
-                    </div>
-                    <div className="action-evidence">
-                      <div><h4>Contoh konkret</h4><p>{action.example}</p></div>
-                      <div><h4>Selesai jika</h4><p>{action.doneWhen}</p></div>
-                    </div>
+                    {activeLesson.id === 'choose-digital-skill' && index === 0 ? (
+                      <div className="skill-map-pilot">
+                        <p className="skill-map-summary">{action.why}</p>
+                        <div className="skill-map-flow" aria-label="Alur mengubah pengalaman menjadi layanan Upwork">
+                          {['Pengalaman', 'Tugas nyata', 'Bukti hasil', 'Layanan Upwork'].map((label, flowIndex) => (
+                            <div key={label}><strong>{label}</strong>{flowIndex < 3 && <ArrowRight size={15} aria-hidden="true" />}</div>
+                          ))}
+                        </div>
+                        <details className="skill-map-guide">
+                          <summary>Panduan langkah demi langkah</summary>
+                          <div className="skill-path-picker">
+                            <span>Kondisimu sekarang</span>
+                            <div role="group" aria-label="Pilih kondisi skill">
+                              <button className={skillPath === 'ready' ? 'active' : ''} onClick={() => setSkillPath('ready')}>Sudah punya skill</button>
+                              <button className={skillPath === 'basic' ? 'active' : ''} onClick={() => setSkillPath('basic')}>Skill masih dasar</button>
+                              <button className={skillPath === 'new' ? 'active' : ''} onClick={() => setSkillPath('new')}>Belum punya skill</button>
+                            </div>
+                          </div>
+                          <ol className="action-steps skill-path-steps">
+                            {(skillPath === 'ready' ? action.how.slice(0, 4) : skillPath === 'basic' ? [action.how[0], action.how[1], action.how[2], action.how[4]] : [action.how[5]]).map((step) => <li key={step}>{step}</li>)}
+                          </ol>
+                          <div className="skill-example-card">
+                            <div><span>Pekerjaan</span><strong>Kelola Instagram kantor</strong></div>
+                            <div><span>Tugas</span><strong>Konten · Canva · Reels · Insights</strong></div>
+                            <div><span>Bukti</span><strong>Posting 2→5/minggu · Engagement 2%→3,2%</strong></div>
+                            <div><span>Layanan</span><strong>Social Media Management</strong></div>
+                          </div>
+                        </details>
+                        <div className="skill-map-done">
+                          <h4>Selesai jika</h4>
+                          <ul>
+                            <li>Maksimal tiga kandidat skill dipilih</li>
+                            <li>Setiap skill punya tugas, tools, dan bukti</li>
+                            <li>Belum punya skill: ada rencana belajar + 2–3 concept project</li>
+                          </ul>
+                        </div>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="action-block">
+                          <h4>Kenapa penting</h4>
+                          <p>{action.why}</p>
+                        </div>
+                        <div className="action-block">
+                          <h4>Cara mengerjakan</h4>
+                          <ol className="action-steps">
+                            {action.how.map((step) => <li key={step}>{step}</li>)}
+                          </ol>
+                        </div>
+                        <div className="action-evidence">
+                          <div><h4>Contoh konkret</h4><p>{action.example}</p></div>
+                          <div><h4>Selesai jika</h4><p>{action.doneWhen}</p></div>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </li>
               ))}
