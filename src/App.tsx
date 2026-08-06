@@ -61,7 +61,6 @@ export default function App() {
   const [copied, setCopied] = useState(false)
   const [profileInputs, setProfileInputs] = useState({ niche: '', client: '', problem: '', skills: '', proof: '', rate: '' })
   const [rateInputs, setRateInputs] = useState({ livingCost: '', otherCosts: '', savingsPercent: '20', billableHours: '20', platformFeePercent: '10' })
-  const [skillPath, setSkillPath] = useState<'ready' | 'basic' | 'new'>('ready')
 
   const stats = calculateActionProgress(progress)
   const activePhase = curriculum.find((phase) => phase.lessons.some((lesson) => lesson.id === activeLessonId)) ?? curriculum[0]
@@ -370,14 +369,14 @@ export default function App() {
                   })
                 }}>Tandai semua siap</button>
               </div>
-              <p className="fast-track-intro">Centang hanya bagian yang memang sudah kamu kuasai. Lesson terkait akan langsung selesai; sisanya tetap menjadi panduanmu. <strong>{prerequisiteReady}/6 siap</strong></p>
+              <p className="fast-track-intro">Centang hanya bagian yang memang sudah kamu kuasai. Lesson terkait akan langsung selesai; sisanya tetap menjadi panduanmu. <strong>{prerequisiteReady}/{prerequisite.lessons.length} siap</strong></p>
               <div className="readiness-grid">
-                {prerequisite.lessons.map((lesson, index) => {
+                {prerequisite.lessons.map((lesson) => {
                   const ready = lessonIsComplete(lesson, progress)
                   return (
                     <button key={lesson.id} className={`readiness-item ${ready ? 'readiness-item-done' : ''}`} onClick={() => toggleLesson(lesson)} aria-pressed={ready}>
                       <span>{ready ? <Check size={14} strokeWidth={3} /> : null}</span>
-                      <div><strong>{['Skill siap dijual', 'Bukti kemampuan tersedia', 'English kerja memadai', 'Akun Upwork valid', 'Perangkat dan waktu siap', 'Pembayaran dan administrasi siap'][index]}</strong><small>{lesson.outcome}</small></div>
+                      <div><strong>{lesson.title}</strong><small>{lesson.outcome}</small></div>
                     </button>
                   )
                 })}
@@ -402,53 +401,18 @@ export default function App() {
                     </button>
                     <div className="action-copy">
                       <div className="action-title-row"><h3>{action.title}</h3></div>
-                      {activeLesson.id === 'choose-digital-skill' && index === 0 ? (
-                        <div className="skill-map-pilot">
-                          <p className="skill-map-summary">{action.why}</p>
-                          <div className="skill-map-flow" aria-label="Alur mengubah pengalaman menjadi layanan Upwork">
-                            {['Pengalaman', 'Tugas nyata', 'Bukti hasil', 'Layanan Upwork'].map((label, flowIndex) => (
-                              <div key={label}><strong>{label}</strong>{flowIndex < 3 && <ArrowRight size={15} aria-hidden="true" />}</div>
-                            ))}
+                      <div className="layered-action">
+                        <p className="action-summary">{action.why}</p>
+                        <details className="action-guide">
+                          <summary>Panduan langkah demi langkah</summary>
+                          <div className="action-guide-body">
+                            <h4>Cara mengerjakan</h4>
+                            <ol className="action-steps">{action.how.map((step) => <li key={step}>{step}</li>)}</ol>
+                            <div className="action-example"><h4>Contoh konkret</h4><p>{action.example}</p></div>
                           </div>
-                          <details className="action-guide skill-map-guide">
-                            <summary>Panduan langkah demi langkah</summary>
-                            <div className="skill-path-picker">
-                              <span>Kondisimu sekarang</span>
-                              <div role="group" aria-label="Pilih kondisi skill">
-                                <button className={skillPath === 'ready' ? 'active' : ''} onClick={() => setSkillPath('ready')}>Sudah punya skill</button>
-                                <button className={skillPath === 'basic' ? 'active' : ''} onClick={() => setSkillPath('basic')}>Skill masih dasar</button>
-                                <button className={skillPath === 'new' ? 'active' : ''} onClick={() => setSkillPath('new')}>Belum punya skill</button>
-                              </div>
-                            </div>
-                            <ol className="action-steps skill-path-steps">
-                              {(skillPath === 'ready' ? action.how.slice(0, 4) : skillPath === 'basic' ? [action.how[0], action.how[1], action.how[2], action.how[4]] : [action.how[5]]).map((step) => <li key={step}>{step}</li>)}
-                            </ol>
-                            <div className="skill-example-card">
-                              <div><span>Pekerjaan</span><strong>Kelola Instagram kantor</strong></div>
-                              <div><span>Tugas</span><strong>Konten · Canva · Reels · Insights</strong></div>
-                              <div><span>Bukti</span><strong>Posting 2→5/minggu · Engagement 2%→3,2%</strong></div>
-                              <div><span>Layanan</span><strong>Social Media Management</strong></div>
-                            </div>
-                          </details>
-                          <div className="skill-map-done">
-                            <h4>Selesai jika</h4>
-                            <ul><li>Maksimal tiga kandidat skill dipilih</li><li>Setiap skill punya tugas, tools, dan bukti</li><li>Belum punya skill: ada rencana belajar + 2–3 concept project</li></ul>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="layered-action">
-                          <p className="action-summary">{action.why}</p>
-                          <details className="action-guide">
-                            <summary>Panduan langkah demi langkah</summary>
-                            <div className="action-guide-body">
-                              <h4>Cara mengerjakan</h4>
-                              <ol className="action-steps">{action.how.map((step) => <li key={step}>{step}</li>)}</ol>
-                              <div className="action-example"><h4>Contoh konkret</h4><p>{action.example}</p></div>
-                            </div>
-                          </details>
-                          <div className="action-done-when"><h4>Selesai jika</h4><p>{action.doneWhen}</p></div>
-                        </div>
-                      )}
+                        </details>
+                        <div className="action-done-when"><h4>Selesai jika</h4><p>{action.doneWhen}</p></div>
+                      </div>
                     </div>
                   </li>
                 )
