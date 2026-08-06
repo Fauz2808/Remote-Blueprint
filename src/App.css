@@ -23,7 +23,7 @@ button { color: inherit; }
 
 .app-shell { min-height: 100vh; background: var(--paper); }
 .wordmark { display: inline-flex; align-items: center; gap: 11px; font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -.02em; }
-.wordmark-mark { display: grid; width: 34px; height: 34px; place-items: center; background: var(--mint); color: var(--pine-deep); border-radius: 9px 3px 9px 3px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: -.06em; }
+.wordmark-mark { display: block; width: 34px; height: 34px; border-radius: 9px 3px 9px 3px; object-fit: cover; }
 .wordmark-light { color: white; text-decoration: none; }
 .wordmark-light .wordmark-mark { box-shadow: 0 0 0 1px rgba(255,255,255,.16); }
 

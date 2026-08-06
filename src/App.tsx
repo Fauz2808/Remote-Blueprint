@@ -153,7 +153,7 @@ export default function App() {
       <main className="login-shell">
         <section className="login-story" aria-labelledby="login-title">
           <div className="wordmark wordmark-light" aria-label="Remote Blueprint">
-            <span className="wordmark-mark">RB</span>
+            <img className="wordmark-mark" src="/brand/remote-blueprint-avatar.svg" alt="" width="34" height="34" />
             <span>Remote Blueprint</span>
           </div>
           <div className="login-copy">
@@ -200,13 +200,13 @@ export default function App() {
     <div className="app-shell">
       <header className="mobile-header">
         <button className="icon-button" onClick={() => setMobileNav(true)} aria-label="Buka navigasi"><Menu size={20} /></button>
-        <div className="wordmark"><span className="wordmark-mark">RB</span><span>Remote Blueprint</span></div>
+        <div className="wordmark"><img className="wordmark-mark" src="/brand/remote-blueprint-avatar.svg" alt="" width="34" height="34" /><span>Remote Blueprint</span></div>
         <span className="mobile-progress">{stats.percentage}%</span>
       </header>
 
       <aside className={`sidebar ${mobileNav ? 'sidebar-open' : ''}`} aria-label="Navigasi kurikulum">
         <div className="sidebar-top">
-          <div className="wordmark"><span className="wordmark-mark">RB</span><span>Remote Blueprint</span></div>
+          <div className="wordmark"><img className="wordmark-mark" src="/brand/remote-blueprint-avatar.svg" alt="" width="34" height="34" /><span>Remote Blueprint</span></div>
           <button className="icon-button sidebar-close" onClick={() => setMobileNav(false)} aria-label="Tutup navigasi"><X size={20} /></button>
           <p className="sidebar-subtitle">Upwork survival system</p>
         </div>
