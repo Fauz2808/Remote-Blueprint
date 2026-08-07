@@ -13,6 +13,16 @@
     "cta_link_slots": ["siang", "sore"],
     "cta_rule": "Slot siang & sore: link langsung di part 8. Slot lain: reply-keyword saja, TANPA link/harga di publik."
   },
+  "content_pattern": {
+    "rule": "WAJIB: tiap thread pola Masalah -> Solusi. Bagian 1-2 = masalah konkret spesifik yang benar-benar dialami target audiens (bukan masalah generik). Bagian 3-6 = value/insight taktis yang bantu paham & mulai atasi masalah itu SENDIRI (harus ada isi asli, jangan cuma teaser kosong). Bagian 7 = jembatan: tegaskan solusi lengkap/sistematis dari masalah ini ada di tracker Remote Blueprint (tanpa hard-sell). Bagian 8 = CTA sesuai slot.",
+    "why": "Threads jualan harus kasih value dulu baru jual — audiens percaya karena sudah dibantu, bukan karena dijejali promosi.",
+    "checklist": [
+      "Bagian 1-2 nyebut masalah spesifik, bukan template umum",
+      "Bagian 3-6 kasih solusi/insight yang beneran actionable, bukan clickbait doang",
+      "Bagian 7 posisikan tracker sebagai versi sistematis dari yang baru dijelasin (bukan produk baru yang gak nyambung)",
+      "Bagian 8 ikutin cta_rule sesuai slot"
+    ]
+  },
   "voice_rules": {
     "do": [
       "Tone tactical, langsung ke poin, gak dramatis",
