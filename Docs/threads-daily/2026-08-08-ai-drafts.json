@@ -1,47 +1,32 @@
 [
   {
-    "slot": "pagi",
-    "time_wib": "08:08",
+    "slot": "sore2",
+    "time_wib": "18:08",
     "threads_topic": "Komunikasi Klien Freelance",
     "parts": [
-      "Ada freelancer yang selalu di-invite ulang tanpa diminta. Bukan karena kerjaannya paling jago. Karena pola komunikasinya bikin klien males cari orang lain.",
-      "Pola 1: respon cepat di jam kerja yang disepakati. Bukan cepat 24 jam, tapi konsisten di window waktu yang klien tahu.",
-      "Pola 2: klarifikasi requirement yang ambigu di awal, bukan asumsi sendiri terus kerja jauh dari ekspektasi mereka.",
-      "Pola 3: kasih rekomendasi kecil di luar scope kalau relevan. Bukan nambah kerjaan gratis, tapi nunjukin kamu mikirin hasil, bukan cuma checklist tugas.",
-      "Pola 4: closing project dengan ringkasan hasil dan next step, bukan cuma bilang sudah selesai. Ini yang bikin klien inget kamu pas ada project baru.",
-      "4 pola ini kecil-kecil, tapi konsisten dilakukan bikin kamu jadi pilihan pertama, bukan salah satu dari puluhan kandidat.",
-      "Cek 4 project terakhir kamu, mana dari 4 pola ini yang udah jadi kebiasaan dan mana yang masih bolong.",
-      "Kalau mau bahas pola komunikasi kamu sama klien sekarang, reply 'KOMUNIKASI' di bawah."
+      "Klien tiba-tiba diem padahal kerjaan lagi jalan lancar. Bukan karena kerjaanmu jelek, tapi karena dia gak tau progressnya sampai mana.",
+      "Kebiasaan yang bikin ini kejadian: nunggu kerjaan kelar baru lapor. Selama itu klien nunggu tanpa info, mulai cemas, lalu diem-diem cari freelancer lain.",
+      "Fix-nya: update progress rutin walau belum kelar. Format 3 poin aja — udah ngerjain apa, next mau ngapain, ada blocker atau nggak.",
+      "Interval-nya jangan nunggu diminta. Kirim tiap 2-3 hari sekali untuk project mingguan, atau tiap milestone kecil kelar untuk project harian.",
+      "Tulis singkat pakai bullet, bukan paragraf panjang. Klien baca di HP sambil kerja, makin ringkas makin cepat dia paham dan percaya.",
+      "Sertain bukti kecil tiap update — screenshot progress, link draft, atau angka concrete (3 dari 5 halaman selesai). Bukti bikin update kerasa nyata, bukan basa-basi.",
+      "Kebiasaan update ini yang bikin klien lama bertahan dan repeat order. Format lengkap plus jadwal update per jenis project ada di tracker Remote Blueprint.",
+      "Mau format update progress siap pakai? Reply UPDATE."
     ]
   },
   {
-    "slot": "siang",
-    "time_wib": "12:08",
-    "threads_topic": "Scale Freelance",
+    "slot": "malam",
+    "time_wib": "20:08",
+    "threads_topic": "Komunikasi Klien Freelance",
     "parts": [
-      "1 project bagus itu awal, bukan tujuan akhir. Freelancer yang income-nya rutin bukan yang paling jago cari klien baru, tapi yang paling jago mempertahankan yang lama.",
-      "Sistemnya sederhana: tiap project selesai, ada 1 langkah kecil buat buka pintu berikutnya. Bukan nunggu klien inget kamu sendiri.",
-      "Langkah 1: minta review atau testimoni di titik klien paling puas, biasanya tepat setelah delivery yang sukses.",
-      "Langkah 2: tanya soal kebutuhan lanjutan atau project lain di tim mereka, bukan cuma tunggu di-invite ulang.",
-      "Langkah 3: follow up ringan 1-2 bulan setelah project selesai kalau belum ada kontak baru. Bukan jualan, sekadar check-in yang relevan.",
-      "Referral dari 1 klien puas biasanya lebih murah dan lebih cepat closing dibanding cari klien baru dari nol.",
-      "Sistem kecil ini yang bikin income gak naik-turun tiap bulan. Bukan soal kerja lebih keras, tapi soal gak buang momentum yang udah ada.",
-      "Sistem lengkapnya — dari profil, bidding, eksekusi, sampai scale — udah kita susun jadi 1 tracker yang bisa langsung dipraktikkan: https://lynk.id/remote_blueprint/k93nyvv2roje"
-    ]
-  },
-  {
-    "slot": "sore",
-    "time_wib": "16:08",
-    "threads_topic": "Remote Blueprint",
-    "parts": [
-      "Remote Blueprint dibuat buat 1 masalah spesifik: kamu punya skill, tapi belum tembus atau belum bisa bertahan kerja remote/freelance.",
-      "Bukan kumpulan motivasi kerja remote. Isinya sistem konkret: dari profil, cara bidding, cara eksekusi, sampai cara dapet klien berulang.",
-      "Cocok buat kamu yang kerja di bidang skill (dev, desain, ops, dll) dan mau nambah penghasilan lewat kerja remote, bukan yang baru mulai belajar skill dari nol.",
-      "Kontennya fokus ke hal taktis yang bisa langsung dipraktikkan minggu ini, bukan cerita motivasi tanpa langkah jelas.",
-      "4 fase yang kita bahas terus: profil yang dipercaya, bidding yang efektif, eksekusi yang bikin repeat order, dan sistem buat scale income.",
-      "Kalau salah satu dari 4 fase ini masih bolong di kerjaan kamu, itu yang biasanya bikin income stuck walau skill udah cukup.",
-      "Konten di sini dijalanin rutin, tiap hari, bahas 1 masalah konkret dari 4 fase itu. Ikutin biar sistemnya nempel, bukan cuma dibaca sekali.",
-      "Kalau kamu relate sama masalah ini dan mau tetep dapet update, reply 'BLUEPRINT' di bawah."
+      "Revisi berkali-kali bukan selalu karena skill kurang. Sering karena brief awal gak digali sampai tuntas.",
+      "Klien kasih brief singkat, freelancer takut nanya kebanyakan dikira gak kompeten. Akhirnya asumsi sendiri, hasil meleset, revisi 3-4 kali.",
+      "Sebelum mulai kerja, wajib gali 4 hal: tujuan akhir project, referensi yang disuka/gak disuka, siapa yang approve hasil, deadline dan prioritas mana yang paling penting.",
+      "Setelah brief dikasih, ulang pakai bahasamu sendiri: 'jadi maksudnya A, B, C, kalau gitu saya mulai dari sini dulu ya'. Kalau ada yang salah paham, ketauan di sini, bukan pas hasil udah jadi.",
+      "Nanya jangan dibingkai sebagai ketidaktahuan, bingkai sebagai konfirmasi. 'Mau konfirmasi biar hasilnya pas' beda kesan sama 'saya kurang paham maksudnya'.",
+      "Kalau klien gak jelas soal referensi, minta 2-3 contoh existing yang dia suka. Contoh visual/tulisan lebih akurat dari deskripsi kata-kata.",
+      "Gali brief di awal ini yang paling nentuin project lancar atau bolak-balik revisi. Script lengkap dan urutan pertanyaannya ada di tracker Remote Blueprint.",
+      "Mau script gali brief biar gak salah paham? Reply KOMUNIKASI."
     ]
   }
 ]
