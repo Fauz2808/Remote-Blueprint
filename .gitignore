@@ -33,3 +33,6 @@ __pycache__/
 # local secrets — never commit
 .env.local
 .env*.local
+
+# tsc build cache
+*.tsbuildinfo
