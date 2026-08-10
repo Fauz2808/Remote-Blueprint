@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { FormEvent } from 'react'
+import type { User } from '@supabase/supabase-js'
 import {
   ArrowRight,
   BookOpen,
@@ -33,10 +34,14 @@ import {
   totalMinutes,
 } from './data/curriculum'
 import type { Lesson } from './data/curriculum'
+import Starter from './Starter'
+import Legal from './Legal'
+import { clearCoreProgress, loadCoreState, saveCoreProgress } from './lib/core'
+import { authConfigured, sendMagicLink, supabase } from './lib/supabase'
 import './App.css'
 
 const PROGRESS_KEY = 'remote-blueprint-progress-v2'
-const ACCESS_KEY = 'remote-blueprint-access-v1'
+
 
 function readProgress() {
   try {
@@ -51,9 +56,19 @@ function firstIncomplete(progress: Record<string, boolean>) {
 }
 
 export default function App() {
-  const [hasAccess, setHasAccess] = useState(() => sessionStorage.getItem(ACCESS_KEY) === 'granted')
-  const [password, setPassword] = useState('')
+  const path = window.location.pathname.replace(/\/$/, '') || '/starter'
+  if (path === '/legal') return <Legal />
+  if (path.startsWith('/starter') || path === '/') return <Starter path={path === '/' ? '/starter' : path} />
+  return <CoreApp />
+}
+
+function CoreApp() {
+  const [user, setUser] = useState<User | null>(null)
+  const [hasAccess, setHasAccess] = useState(false)
+  const [authLoading, setAuthLoading] = useState(authConfigured)
+  const [email, setEmail] = useState('')
   const [loginError, setLoginError] = useState('')
+  const [loginSent, setLoginSent] = useState(false)
   const [progress, setProgress] = useState<Record<string, boolean>>(readProgress)
   const [activeLessonId, setActiveLessonId] = useState(() => firstIncomplete(readProgress()))
   const [mobileNav, setMobileNav] = useState(false)
@@ -100,20 +115,51 @@ export default function App() {
     localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress))
   }, [progress])
 
+  useEffect(() => {
+    if (!supabase) return
+    let active = true
+    const applyUser = async (nextUser: User | null) => {
+      if (!active) return
+      setUser(nextUser)
+      if (!nextUser) { setHasAccess(false); setAuthLoading(false); return }
+      try {
+        const state = await loadCoreState(nextUser, readProgress())
+        if (!active) return
+        setHasAccess(state.entitled)
+        setProgress(state.progress)
+        if (state.entitled) await saveCoreProgress(nextUser.id, state.progress)
+      } catch {
+        if (active) setLoginError('Akses belum dapat diperiksa. Coba lagi beberapa saat.')
+      } finally {
+        if (active) setAuthLoading(false)
+      }
+    }
+    supabase.auth.getUser().then(({ data }) => applyUser(data.user))
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => { void applyUser(session?.user ?? null) })
+    return () => { active = false; data.subscription.unsubscribe() }
+  }, [])
+
+  useEffect(() => {
+    if (!user || !hasAccess) return
+    const timer = window.setTimeout(() => { void saveCoreProgress(user.id, progress) }, 350)
+    return () => window.clearTimeout(timer)
+  }, [progress, user, hasAccess])
+
   const phaseProgress = useMemo(
     () => Object.fromEntries(curriculum.map((phase) => [phase.id, phase.lessons.filter((lesson) => lessonIsComplete(lesson, progress)).length])),
     [progress],
   )
 
-  const login = (event: FormEvent) => {
+  const login = async (event: FormEvent) => {
     event.preventDefault()
-    if (password !== 'GTM2026') {
-      setLoginError('Access key salah. Periksa kembali kode pembelianmu.')
-      return
-    }
-    sessionStorage.setItem(ACCESS_KEY, 'granted')
-    setHasAccess(true)
     setLoginError('')
+    setLoginSent(false)
+    try {
+      await sendMagicLink(email)
+      setLoginSent(true)
+    } catch (error) {
+      setLoginError(error instanceof Error ? error.message : 'Link login gagal dikirim.')
+    }
   }
 
   const chooseLesson = (id: string) => {
@@ -136,8 +182,9 @@ export default function App() {
     setProgress((current) => ({ ...current, [id]: !current[id] }))
   }
 
-  const resetProgress = () => {
+  const resetProgress = async () => {
     if (!window.confirm('Reset seluruh progres di perangkat ini?')) return
+    if (user) await clearCoreProgress(user.id)
     setProgress({})
     setActiveLessonId(curriculum[0].lessons[0].id)
   }
@@ -147,6 +194,8 @@ export default function App() {
     setCopied(true)
     window.setTimeout(() => setCopied(false), 1800)
   }
+
+  if (authLoading) return <main className="login-shell"><section className="login-panel"><p>Memeriksa akses…</p></section></main>
 
   if (!hasAccess) {
     return (
@@ -162,7 +211,7 @@ export default function App() {
             <p>Tracker praktis bagi profesional Indonesia yang ingin mengubah pengalaman kerja menjadi profil, proposal, dan reputasi yang dipercaya klien global.</p>
           </div>
           <div className="login-proof">
-            <div><strong>4</strong><span>fase terarah</span></div>
+            <div><strong>5</strong><span>fase terarah</span></div>
             <div><strong>{stats.total}</strong><span>lesson praktis</span></div>
             <div><strong>{totalMinutes}</strong><span>menit estimasi</span></div>
           </div>
@@ -173,23 +222,25 @@ export default function App() {
             <div className="access-icon"><KeyRound size={22} /></div>
             <p className="eyebrow">Member access</p>
             <h2>Lanjutkan blueprint-mu</h2>
-            <p className="muted">Masukkan access key yang diterima setelah pembelian.</p>
-            <label htmlFor="access-key">Access key</label>
+            <p className="muted">Gunakan email yang sama saat checkout di Lynk.id. Link login akan dikirim ke emailmu.</p>
+            <label htmlFor="login-email">Email pembelian</label>
             <input
-              id="access-key"
-              type="password"
-              value={password}
-              onChange={(event) => { setPassword(event.target.value); setLoginError('') }}
-              placeholder="Masukkan access key"
-              autoComplete="current-password"
+              id="login-email"
+              type="email"
+              required
+              value={email}
+              onChange={(event) => { setEmail(event.target.value); setLoginError(''); setLoginSent(false) }}
+              placeholder="nama@email.com"
+              autoComplete="email"
               aria-describedby={loginError ? 'login-error' : 'device-note'}
               autoFocus
             />
             {loginError && <p className="form-error" id="login-error">{loginError}</p>}
+            {loginSent && <p className="form-success" role="status">Link login terkirim. Periksa inbox dan folder spam.</p>}
             <button className="button button-primary button-wide" type="submit">
-              Buka tracker <ArrowRight size={17} />
+              Kirim link login <ArrowRight size={17} />
             </button>
-            <p className="device-note" id="device-note"><ShieldCheck size={15} /> Progres tersimpan hanya di perangkat ini.</p>
+            <p className="device-note" id="device-note"><ShieldCheck size={15} /> Progres tersimpan aman dan bisa dibuka lintas perangkat.</p>
           </form>
         </section>
       </main>
@@ -245,8 +296,9 @@ export default function App() {
         <div className="sidebar-actions">
           <button onClick={() => setShowVault(true)}><FileText size={16} /> Upwork Labs</button>
           <button onClick={resetProgress}><RotateCcw size={16} /> Reset progres</button>
-          <button onClick={() => { sessionStorage.removeItem(ACCESS_KEY); setHasAccess(false) }}><LogOut size={16} /> Keluar</button>
+          <button onClick={() => { void supabase?.auth.signOut() }}><LogOut size={16} /> Keluar</button>
         </div>
+        <a href="/legal" style={{ display: 'block', marginTop: 10, padding: '0 8px', color: 'var(--ink-soft)', fontSize: 11 }}>Refund & Privasi</a>
       </aside>
       {mobileNav && <button className="scrim" onClick={() => setMobileNav(false)} aria-label="Tutup navigasi" />}
 

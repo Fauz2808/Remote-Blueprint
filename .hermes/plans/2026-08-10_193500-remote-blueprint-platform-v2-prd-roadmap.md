@@ -1,6 +1,6 @@
-# Remote Blueprint Platform v2 — PRD & Roadmap
+# Remote Blueprint Platform v2 — PRD & Roadmap Draft
 
-> **Status:** APPROVED — Fauzan, 10 Agustus 2026. Sumber kebenaran implementasi.
+> **Status:** FINAL DRAFT — seluruh open decision sudah dikunci; menunggu approval eksplisit Fauzan sebelum eksekusi.
 >
 > **Produk:** Remote Blueprint
 > **Domain:** `https://remoteblueprint.my.id`
