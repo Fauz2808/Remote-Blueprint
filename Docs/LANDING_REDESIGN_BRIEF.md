@@ -5,9 +5,9 @@ Explain one coherent product ecosystem, move visitors from diagnosis to action, 
 
 ## Visual foundation
 - React 19 + TypeScript + existing CSS; no new dependency.
-- Palette: Slate 950 `#020617`, Slate 900 `#0f172a`, line `#1e293b`, muted `#94a3b8`, Upwork green `#14a800`, highlighter lime `#d9f56f`, white `#ffffff`.
+- Light field-guide system shared with Upwork Survival Guide: paper `#f6f6f0`, surface `#fffef9`, ink `#172019`, muted `#526058`, pine `#0b442c`, mint `#d9f56f`, sage `#e7ecdf`.
 - Typography: Space Grotesk display, Inter body, JetBrains Mono metadata.
-- 8px grid, max-width 1200px, 1px technical borders, restrained radius, no heavy shadow.
+- 8px grid, max-width 1200px, 1px technical borders, restrained radius, tinted low-elevation shadow only for product-output surfaces.
 - Signature: real product-output rail (readiness score → gap → job decision), not decorative SaaS dashboard.
 
 ## Information architecture

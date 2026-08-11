@@ -33,4 +33,12 @@ describe('public landing information architecture', () => {
       .join('\n')
     expect(publicCopy).not.toMatch(/\bCore\b/)
   })
+
+  it('locks public surfaces to the Upwork Survival Guide light theme', () => {
+    const css = readFileSync('src/App.css', 'utf8')
+    expect(css).toContain('--public-paper: #f6f6f0')
+    expect(css).toContain('--public-surface: #fffef9')
+    expect(css).toContain('--public-pine: #0b442c')
+    expect(css).toContain('.landing-shell, .starter-shell')
+  })
 })
