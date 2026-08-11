@@ -1,6 +1,28 @@
 # Remote Blueprint Platform v2 — Roadmap
 
 > Turunan dari `PRD.md`, approved 10 Agustus 2026.
+>
+> Expansion addendum approved 11 Agustus 2026: `.hermes/plans/2026-08-11_remote-blueprint-platform-expansion-prd.md`.
+
+## Phase 7 — Education platform expansion
+
+**Tujuan:** memperluas Remote Blueprint menjadi platform navigasi kerja remote tanpa melemahkan flagship product.
+
+Deliverables:
+
+- Homepage edukasi dan lima fase perjalanan.
+- Mulai di Sini, 5 phase overview, dan 10 artikel substantive.
+- Upwork pathway dan product page terpisah.
+- Repo-based content store dengan source/review metadata.
+- Email gate setelah input Readiness Scanner dan Job Fit Checker.
+- Newsletter consent terpisah dan kosong secara default.
+- Soft launch, rollback point, dan observasi 30 hari.
+
+Exit criteria:
+
+- 18 public core surfaces dan 3 tools usable.
+- Auth, payment, webhook, entitlement, progress, legal, dan curriculum existing lulus regression.
+- Build, lint, tests, content/link checks, accessibility, mobile, dan production smoke test lulus.
 
 ## Phase 0 — Alignment & product lock
 

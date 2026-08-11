@@ -3,6 +3,8 @@ import type { FormEvent } from 'react'
 import { ArrowRight, BookOpen, BriefcaseBusiness, CheckCircle2, Compass, ShieldAlert, Target } from 'lucide-react'
 import { readinessOptions, readinessQuestions, scoreJobFit, scoreReadiness, securityRedFlags } from './starter'
 import type { JobFitInput, JobFitResult, ReadinessResult } from './starter'
+import { createLeadPayload, submitLead } from './lib/leads'
+import type { LeadTool } from './lib/leads'
 
 const READINESS_KEY = 'remote-blueprint-starter-readiness-v1'
 const JOB_FIT_KEY = 'remote-blueprint-starter-job-fit-v1'
@@ -28,22 +30,36 @@ export default function Starter({ path }: { path: string }) {
   const module = path.endsWith('/guide') ? 'guide' : path.endsWith('/readiness') ? 'readiness' : path.endsWith('/job-fit') ? 'job-fit' : 'home'
   const [answers, setAnswers] = useState<(number | undefined)[]>(Array(readinessQuestions.length).fill(undefined))
   const [readiness, setReadiness] = useState<ReadinessResult | null>(() => readLocal(READINESS_KEY))
+  const [pendingReadiness, setPendingReadiness] = useState<ReadinessResult | null>(null)
   const [job, setJob] = useState(defaultJob)
   const [jobResult, setJobResult] = useState<JobFitResult | null>(() => readLocal(JOB_FIT_KEY))
+  const [pendingJobResult, setPendingJobResult] = useState<JobFitResult | null>(null)
 
   const submitReadiness = (event: FormEvent) => {
     event.preventDefault()
     if (answers.some((answer) => answer === undefined)) return
     const result = scoreReadiness(answers as number[])
-    setReadiness(result)
-    try { localStorage.setItem(READINESS_KEY, JSON.stringify(result)) } catch { /* local saving is optional */ }
+    setPendingReadiness(result)
   }
 
   const submitJob = (event: FormEvent) => {
     event.preventDefault()
     const result = scoreJobFit(job)
-    setJobResult(result)
-    try { localStorage.setItem(JOB_FIT_KEY, JSON.stringify(result)) } catch { /* local saving is optional */ }
+    setPendingJobResult(result)
+  }
+
+  const unlockReadiness = () => {
+    if (!pendingReadiness) return
+    setReadiness(pendingReadiness)
+    try { localStorage.setItem(READINESS_KEY, JSON.stringify(pendingReadiness)) } catch { /* local saving is optional */ }
+    setPendingReadiness(null)
+  }
+
+  const unlockJob = () => {
+    if (!pendingJobResult) return
+    setJobResult(pendingJobResult)
+    try { localStorage.setItem(JOB_FIT_KEY, JSON.stringify(pendingJobResult)) } catch { /* local saving is optional */ }
+    setPendingJobResult(null)
   }
 
   return <div className="starter-shell">
@@ -82,6 +98,7 @@ export default function Starter({ path }: { path: string }) {
         {readinessQuestions.map((item, index) => <fieldset key={item.id}><legend><span>{String(index + 1).padStart(2, '0')}</span>{item.question}</legend><div>{readinessOptions.map((option) => <label key={option.value}><input required type="radio" name={item.id} value={option.value} checked={answers[index] === option.value} onChange={() => setAnswers((current) => current.map((value, i) => i === index ? option.value : value))} /><span>{option.label}</span></label>)}</div></fieldset>)}
         <button className="button starter-cta" type="submit">Lihat hasil kesiapan <ArrowRight size={16} /></button>
       </form>
+      {pendingReadiness && <LeadGate tool="readiness" onUnlock={unlockReadiness} />}
       {readiness && <section className="starter-result" aria-live="polite" tabIndex={-1}>
         <div className="result-score"><span>{readiness.score}</span><small>/ 100</small></div><div><p className="eyebrow">Status kesiapan</p><h2>{readiness.status}</h2><p>Rekomendasi fase: <strong>{readiness.phase}</strong></p></div>
         <div className="result-columns"><section><h3>Tiga gap prioritas</h3><ol>{readiness.gaps.map((gap) => <li key={gap}>{gap}</li>)}</ol></section><section><h3>Tiga next action</h3><ol>{readiness.actions.map((action) => <li key={action}>{action}</li>)}</ol></section></div>
@@ -102,6 +119,8 @@ export default function Starter({ path }: { path: string }) {
         <fieldset className="redflag-field"><legend><ShieldAlert size={18} /> Red flag keamanan</legend>{securityRedFlags.map((flag) => <label key={flag.id}><input type="checkbox" checked={job.redFlags.includes(flag.id)} onChange={(event) => setJob({ ...job, redFlags: event.target.checked ? [...job.redFlags, flag.id] : job.redFlags.filter((id) => id !== flag.id) })} />{flag.label}</label>)}</fieldset>
         <button className="button starter-cta" type="submit">Nilai job <ArrowRight size={16} /></button>
       </form>
+      {pendingJobResult?.decision === 'AVOID/REPORT' && <p className="safety-stop" role="alert"><ShieldAlert size={18} /> Red flag keamanan terdeteksi. Jangan lanjut, jangan kirim data atau uang, dan gunakan fitur report bila perlu.</p>}
+      {pendingJobResult && <LeadGate tool="job-fit" onUnlock={unlockJob} />}
       {jobResult && <section className={`starter-result decision-${jobResult.decision.replace('/REPORT', '').toLowerCase()}`} aria-live="polite">
         <div className="result-score"><span>{jobResult.score}</span><small>/ 100 fit</small></div><div><p className="eyebrow">Keputusan</p><h2>{jobResult.decision}</h2><p>Risiko Connects: <strong>{jobResult.risk}</strong></p></div>
         <div className="result-columns"><section><h3>Alasan</h3><ul>{jobResult.reasons.map((reason) => <li key={reason}>{reason}</li>)}</ul></section><section><h3>Perlu diklarifikasi</h3>{jobResult.clarify.length ? <ul>{jobResult.clarify.map((item) => <li key={item}>{item}</li>)}</ul> : <p>Tidak ada klarifikasi utama dari input ini.</p>}</section></div>
@@ -110,4 +129,37 @@ export default function Starter({ path }: { path: string }) {
       </section>}
     </main>}
   </div>
+}
+
+function LeadGate({ tool, onUnlock }: { tool: LeadTool; onUnlock: () => void }) {
+  const [email, setEmail] = useState('')
+  const [newsletter, setNewsletter] = useState(false)
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const submit = async (event: FormEvent) => {
+    event.preventDefault()
+    setError('')
+    setLoading(true)
+    try {
+      await submitLead(createLeadPayload(email, tool, newsletter))
+      onUnlock()
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'Email belum dapat disimpan. Coba lagi.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return <section className="lead-gate" aria-labelledby={`${tool}-gate-title`}>
+    <div><p className="eyebrow">Hasil sudah siap</p><h2 id={`${tool}-gate-title`}>Masukkan email untuk membuka hasil lengkap.</h2><p>Email disimpan sebagai syarat akses hasil. Hasil lengkap tetap tampil dan tersimpan lokal di perangkat ini. Newsletter pilihan terpisah.</p></div>
+    <form onSubmit={submit}>
+      <label htmlFor={`${tool}-email`}>Email</label>
+      <input id={`${tool}-email`} type="email" required autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="nama@email.com" />
+      <label className="newsletter-choice"><input type="checkbox" checked={newsletter} onChange={(event) => setNewsletter(event.target.checked)} /> Kirim juga bacaan terbaru Remote Blueprint. Bisa berhenti kapan saja.</label>
+      {error && <p className="form-error" role="alert">{error}</p>}
+      <button className="button starter-cta" type="submit" disabled={loading}>{loading ? 'Menyimpan…' : 'Buka hasil lengkap'} <ArrowRight size={16} /></button>
+      <small>Tidak memilih newsletter tidak menghalangi hasil. <a href="/legal">Lihat privasi dan penghapusan data.</a></small>
+    </form>
+  </section>
 }

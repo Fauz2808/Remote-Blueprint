@@ -36,7 +36,8 @@ import {
 import type { Lesson } from './data/curriculum'
 import Starter from './Starter'
 import Legal from './Legal'
-import Landing from './Landing'
+import { PlatformHome, PublicPage } from './PublicPages'
+import { resolvePublicRoute } from './routes'
 import { clearCoreProgress, loadCoreState, saveCoreProgress } from './lib/core'
 import { authConfigured, sendMagicLink, supabase } from './lib/supabase'
 import './App.css'
@@ -59,8 +60,10 @@ function firstIncomplete(progress: Record<string, boolean>) {
 export default function App() {
   const path = window.location.pathname.replace(/\/$/, '') || '/'
   if (path === '/legal') return <Legal />
-  if (path === '/') return <Landing />
+  if (path === '/') return <PlatformHome />
   if (path.startsWith('/starter')) return <Starter path={path} />
+
+  if (path.startsWith('/mulai') || path.startsWith('/fase/') || path.startsWith('/artikel') || path.startsWith('/jalur/') || path.startsWith('/produk/')) return <PublicPage route={resolvePublicRoute(path)} />
   return <CoreApp />
 }
 

@@ -6,6 +6,8 @@
 > **Domain:** `https://remoteblueprint.my.id`
 > **Checkout:** Lynk.id
 > **Tanggal:** 10 Agustus 2026
+>
+> **Addendum approved 11 Agustus 2026:** `.hermes/plans/2026-08-11_remote-blueprint-platform-expansion-prd.md` memiliki precedence untuk positioning brand, audience, IA publik, publishing, email gate, dan launch. Dokumen ini tetap canonical untuk auth, payment, webhook, entitlement, progress, dan kurikulum paid product.
 
 ---
 
