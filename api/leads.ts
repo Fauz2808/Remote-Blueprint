@@ -28,13 +28,24 @@ export default async function handler(request: Request, response: Response) {
     const now = new Date().toISOString()
     const objectName = `${createHash('sha256').update(`${email}:${tool}`).digest('hex')}.json`
     // ponytail: private object storage is sufficient below 1,000 leads; migrate to a table when segmentation or bulk querying is needed.
-    const { error } = await supabase.storage.from('content-leads').upload(objectName, JSON.stringify({
+    let { error } = await supabase.storage.from('content-leads').upload(objectName, JSON.stringify({
       email,
       tool,
       newsletterConsent,
       consentedAt: newsletterConsent ? now : null,
       updatedAt: now,
     }), { contentType: 'application/json', upsert: true })
+    if (error?.message?.includes('not found') || (error as { statusCode?: string })?.statusCode === '404') {
+      const created = await supabase.storage.createBucket('content-leads', { public: false, fileSizeLimit: 16384, allowedMimeTypes: ['application/json'] })
+      if (created.error && !created.error.message?.includes('already exists')) throw created.error
+      ;({ error } = await supabase.storage.from('content-leads').upload(objectName, JSON.stringify({
+        email,
+        tool,
+        newsletterConsent,
+        consentedAt: newsletterConsent ? now : null,
+        updatedAt: now,
+      }), { contentType: 'application/json', upsert: true }))
+    }
     if (error) throw error
     return response.status(200).json({ ok: true })
   } catch (error) {

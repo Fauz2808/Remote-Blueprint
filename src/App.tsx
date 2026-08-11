@@ -64,7 +64,8 @@ export default function App() {
   if (path.startsWith('/starter')) return <Starter path={path} />
 
   if (path.startsWith('/mulai') || path.startsWith('/fase/') || path.startsWith('/artikel') || path.startsWith('/jalur/') || path.startsWith('/produk/')) return <PublicPage route={resolvePublicRoute(path)} />
-  return <CoreApp />
+  if (path === '/app') return <CoreApp />
+  return <PublicPage route={{ kind: 'not-found' }} />
 }
 
 function CoreApp() {

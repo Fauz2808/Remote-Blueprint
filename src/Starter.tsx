@@ -8,6 +8,8 @@ import type { LeadTool } from './lib/leads'
 
 const READINESS_KEY = 'remote-blueprint-starter-readiness-v1'
 const JOB_FIT_KEY = 'remote-blueprint-starter-job-fit-v1'
+const READINESS_UNLOCK_KEY = 'remote-blueprint-starter-readiness-unlocked-v1'
+const JOB_FIT_UNLOCK_KEY = 'remote-blueprint-starter-job-fit-unlocked-v1'
 
 const guideSections = [
   ['01', 'Skill menjadi sistem', 'Urutannya: skill → proof → profile → job → proposal → contract. Jangan lompat ke proposal jika jasa dan proof belum jelas.'],
@@ -29,36 +31,38 @@ function readLocal<T>(key: string): T | null {
 export default function Starter({ path }: { path: string }) {
   const module = path.endsWith('/guide') ? 'guide' : path.endsWith('/readiness') ? 'readiness' : path.endsWith('/job-fit') ? 'job-fit' : 'home'
   const [answers, setAnswers] = useState<(number | undefined)[]>(Array(readinessQuestions.length).fill(undefined))
-  const [readiness, setReadiness] = useState<ReadinessResult | null>(() => readLocal(READINESS_KEY))
+  const [readiness, setReadiness] = useState<ReadinessResult | null>(() => localStorage.getItem(READINESS_UNLOCK_KEY) === '1' ? readLocal(READINESS_KEY) : null)
   const [pendingReadiness, setPendingReadiness] = useState<ReadinessResult | null>(null)
   const [job, setJob] = useState(defaultJob)
-  const [jobResult, setJobResult] = useState<JobFitResult | null>(() => readLocal(JOB_FIT_KEY))
+  const [jobResult, setJobResult] = useState<JobFitResult | null>(() => localStorage.getItem(JOB_FIT_UNLOCK_KEY) === '1' ? readLocal(JOB_FIT_KEY) : null)
   const [pendingJobResult, setPendingJobResult] = useState<JobFitResult | null>(null)
 
   const submitReadiness = (event: FormEvent) => {
     event.preventDefault()
     if (answers.some((answer) => answer === undefined)) return
     const result = scoreReadiness(answers as number[])
+    setReadiness(null)
     setPendingReadiness(result)
   }
 
   const submitJob = (event: FormEvent) => {
     event.preventDefault()
     const result = scoreJobFit(job)
+    setJobResult(null)
     setPendingJobResult(result)
   }
 
   const unlockReadiness = () => {
     if (!pendingReadiness) return
     setReadiness(pendingReadiness)
-    try { localStorage.setItem(READINESS_KEY, JSON.stringify(pendingReadiness)) } catch { /* local saving is optional */ }
+    try { localStorage.setItem(READINESS_KEY, JSON.stringify(pendingReadiness)); localStorage.setItem(READINESS_UNLOCK_KEY, '1') } catch { /* local saving is optional */ }
     setPendingReadiness(null)
   }
 
   const unlockJob = () => {
     if (!pendingJobResult) return
     setJobResult(pendingJobResult)
-    try { localStorage.setItem(JOB_FIT_KEY, JSON.stringify(pendingJobResult)) } catch { /* local saving is optional */ }
+    try { localStorage.setItem(JOB_FIT_KEY, JSON.stringify(pendingJobResult)); localStorage.setItem(JOB_FIT_UNLOCK_KEY, '1') } catch { /* local saving is optional */ }
     setPendingJobResult(null)
   }
 
@@ -70,7 +74,7 @@ export default function Starter({ path }: { path: string }) {
         <a aria-current={module === 'readiness' ? 'page' : undefined} href="/starter/readiness">Scanner</a>
         <a aria-current={module === 'job-fit' ? 'page' : undefined} href="/starter/job-fit">Job Fit</a>
         <a href="/legal">Refund & Privasi</a>
-        <a className="starter-core-link" href="/#produk">Produk</a>
+        <a className="starter-core-link" href="/produk/upwork-survival-system">Produk</a>
       </nav>
     </header>
 
@@ -125,7 +129,7 @@ export default function Starter({ path }: { path: string }) {
         <div className="result-score"><span>{jobResult.score}</span><small>/ 100 fit</small></div><div><p className="eyebrow">Keputusan</p><h2>{jobResult.decision}</h2><p>Risiko Connects: <strong>{jobResult.risk}</strong></p></div>
         <div className="result-columns"><section><h3>Alasan</h3><ul>{jobResult.reasons.map((reason) => <li key={reason}>{reason}</li>)}</ul></section><section><h3>Perlu diklarifikasi</h3>{jobResult.clarify.length ? <ul>{jobResult.clarify.map((item) => <li key={item}>{item}</li>)}</ul> : <p>Tidak ada klarifikasi utama dari input ini.</p>}</section></div>
         <div className="proposal-angle"><CheckCircle2 /><div><h3>Sudut proposal</h3><p>{jobResult.angle}</p></div></div>
-        <div className="core-callout"><div><small>Butuh sistem eksekusi?</small><h3>Upwork Survival System membantumu menyelesaikan {readiness?.phase ?? 'gap dari positioning sampai delivery'}.</h3></div><a className="button starter-cta" href="/#produk">Lihat Upwork Survival System <ArrowRight size={16} /></a></div>
+        <div className="core-callout"><div><small>Butuh sistem eksekusi?</small><h3>Upwork Survival System membantumu menyelesaikan {readiness?.phase ?? 'gap dari positioning sampai delivery'}.</h3></div><a className="button starter-cta" href="/produk/upwork-survival-system">Lihat Upwork Survival System <ArrowRight size={16} /></a></div>
       </section>}
     </main>}
   </div>
