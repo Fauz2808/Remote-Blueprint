@@ -16,9 +16,9 @@ Sebelum publish, isi checklist ini. Website tetap jalan tanpa ini (build sudah l
 
 ## 2. Lynk.id
 
-1. Buat listing baru **Remote Blueprint Core** — Rp149.000. Jangan pakai listing lama.
+1. Gunakan listing existing **Remote Blueprint — Upwork Survival System**. Produk baru `Remote Blueprint Core` dibatalkan karena belum menambah value esensial.
 2. Ambil `merchant key` (dipakai verifikasi signature webhook) → `LYNK_MERCHANT_KEY`.
-3. Ambil `product uuid` listing Core → `LYNK_CORE_PRODUCT_UUID`.
+3. Gunakan product ID listing existing → `LYNK_CORE_PRODUCT_UUID`.
 4. Set webhook URL Lynk ke: `https://remoteblueprint.my.id/api/webhooks/lynk`.
 5. Checkout URL listing → `VITE_LYNK_CORE_CHECKOUT_URL`.
 

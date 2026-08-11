@@ -831,7 +831,7 @@ Bukan roadmap committed: AI generator, scraping, native app, community, subscrip
 6. **Job Fit history — LOCKED:** simpan hanya skor, keputusan, faktor utama, dan tanggal setelah consent. Full job description tidak disimpan. User dapat menghapus hasil.
 7. **Pilot support — NOT APPLICABLE:** harga launch sudah dikunci Core Rp149.000; tidak ada Pilot Rp99.000 pada launch ini.
 8. **Refund policy — LOCKED:** refund 7 hari untuk masalah akses teknis atau fitur utama tidak sesuai listing. Tidak berlaku setelah >30% action selesai, sekadar berubah pikiran setelah memakai banyak materi, gagal mendapat klien, pelanggaran akun, atau masalah akun Upwork. Kasus wajar tetap dapat ditinjau manual.
-9. **Lynk listing — LOCKED:** buat listing baru `Remote Blueprint Core`. Listing `Upwork Cuan Tracker` lama diarsipkan setelah Core siap. Mapping webhook memakai UUID listing baru.
+9. **Lynk listing — REVISED 11 Agustus 2026:** gunakan listing existing `Remote Blueprint — Upwork Survival System`. Listing baru `Remote Blueprint Core` dibatalkan karena curriculum Core belum menambah value esensial dibanding produk existing. Mapping webhook memakai product ID listing existing; harga/positioning baru harus melalui revisi PRD.
 10. **Brand naming — LOCKED:** `Remote Blueprint Starter` untuk tier gratis dan `Remote Blueprint Core` untuk tier Rp149.000.
 
 ---
