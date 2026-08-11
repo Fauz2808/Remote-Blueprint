@@ -54,7 +54,7 @@ export default function Starter({ path }: { path: string }) {
         <a aria-current={module === 'readiness' ? 'page' : undefined} href="/starter/readiness">Scanner</a>
         <a aria-current={module === 'job-fit' ? 'page' : undefined} href="/starter/job-fit">Job Fit</a>
         <a href="/legal">Refund & Privasi</a>
-        <a className="starter-core-link" href="/app">Core</a>
+        <a className="starter-core-link" href="/#produk">Produk</a>
       </nav>
     </header>
 
@@ -83,7 +83,7 @@ export default function Starter({ path }: { path: string }) {
         <button className="button starter-cta" type="submit">Lihat hasil kesiapan <ArrowRight size={16} /></button>
       </form>
       {readiness && <section className="starter-result" aria-live="polite" tabIndex={-1}>
-        <div className="result-score"><span>{readiness.score}</span><small>/ 100</small></div><div><p className="eyebrow">Status kesiapan</p><h2>{readiness.status}</h2><p>Rekomendasi Core: <strong>{readiness.phase}</strong></p></div>
+        <div className="result-score"><span>{readiness.score}</span><small>/ 100</small></div><div><p className="eyebrow">Status kesiapan</p><h2>{readiness.status}</h2><p>Rekomendasi fase: <strong>{readiness.phase}</strong></p></div>
         <div className="result-columns"><section><h3>Tiga gap prioritas</h3><ol>{readiness.gaps.map((gap) => <li key={gap}>{gap}</li>)}</ol></section><section><h3>Tiga next action</h3><ol>{readiness.actions.map((action) => <li key={action}>{action}</li>)}</ol></section></div>
         <div className="result-footer"><span>Hasil terbaru tersimpan lokal di perangkat ini.</span><a className="button starter-cta" href="/starter/job-fit">Periksa job <ArrowRight size={16} /></a></div>
       </section>}
@@ -106,7 +106,7 @@ export default function Starter({ path }: { path: string }) {
         <div className="result-score"><span>{jobResult.score}</span><small>/ 100 fit</small></div><div><p className="eyebrow">Keputusan</p><h2>{jobResult.decision}</h2><p>Risiko Connects: <strong>{jobResult.risk}</strong></p></div>
         <div className="result-columns"><section><h3>Alasan</h3><ul>{jobResult.reasons.map((reason) => <li key={reason}>{reason}</li>)}</ul></section><section><h3>Perlu diklarifikasi</h3>{jobResult.clarify.length ? <ul>{jobResult.clarify.map((item) => <li key={item}>{item}</li>)}</ul> : <p>Tidak ada klarifikasi utama dari input ini.</p>}</section></div>
         <div className="proposal-angle"><CheckCircle2 /><div><h3>Sudut proposal</h3><p>{jobResult.angle}</p></div></div>
-        <div className="core-callout"><div><small>Butuh sistem eksekusi?</small><h3>Core membantumu menyelesaikan {readiness?.phase ?? 'gap dari positioning sampai delivery'}.</h3></div><a className="button starter-cta" href="/app">Lihat Remote Blueprint Core <ArrowRight size={16} /></a></div>
+        <div className="core-callout"><div><small>Butuh sistem eksekusi?</small><h3>Upwork Survival System membantumu menyelesaikan {readiness?.phase ?? 'gap dari positioning sampai delivery'}.</h3></div><a className="button starter-cta" href="/#produk">Lihat Upwork Survival System <ArrowRight size={16} /></a></div>
       </section>}
     </main>}
   </div>

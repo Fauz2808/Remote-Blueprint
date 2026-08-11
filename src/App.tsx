@@ -36,6 +36,7 @@ import {
 import type { Lesson } from './data/curriculum'
 import Starter from './Starter'
 import Legal from './Legal'
+import Landing from './Landing'
 import { clearCoreProgress, loadCoreState, saveCoreProgress } from './lib/core'
 import { authConfigured, sendMagicLink, supabase } from './lib/supabase'
 import './App.css'
@@ -56,9 +57,10 @@ function firstIncomplete(progress: Record<string, boolean>) {
 }
 
 export default function App() {
-  const path = window.location.pathname.replace(/\/$/, '') || '/starter'
+  const path = window.location.pathname.replace(/\/$/, '') || '/'
   if (path === '/legal') return <Legal />
-  if (path.startsWith('/starter') || path === '/') return <Starter path={path === '/' ? '/starter' : path} />
+  if (path === '/') return <Landing />
+  if (path.startsWith('/starter')) return <Starter path={path} />
   return <CoreApp />
 }
 
