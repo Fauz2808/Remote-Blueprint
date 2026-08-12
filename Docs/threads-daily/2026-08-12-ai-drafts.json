@@ -1,0 +1,77 @@
+[
+  {
+    "slot": "pagi",
+    "time_wib": "08:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "parts": [
+      "Klien tiba-tiba hilang di tengah proyek. Chat gak dibalas, invoice belum dibayar, kerjaan udah setengah jalan.",
+      "Ini bukan nasib buruk doang. Kebanyakan kasus kabur klien terjadi karena gak ada checkpoint & komitmen tertulis dari awal.",
+      "Solusi 1: sebelum mulai kerja, kunci milestone pembayaran. Minimal DP 30-50% cair dulu, sisanya per milestone bukan di akhir semua.",
+      "Solusi 2: setiap kesepakatan penting rekap ulang lewat chat tertulis, bukan cuma diomongin di call. \"Jadi ini kita sepakat X, deadline Y, ya?\"",
+      "Solusi 3: kalau klien mulai lambat balas, jangan diemin. Kirim update progress + pertanyaan spesifik yang butuh jawaban, biar dia kepancing balas.",
+      "Solusi 4: pasang klausa jeda kerja di kontrak/proposal — kalau klien gak respons X hari setelah deliverable dikirim, proyek dianggap pause dan sisa pembayaran tetap jalan sesuai milestone terakhir.",
+      "Pola komunikasi kayak ini yang bikin proyek freelance jalan aman ada sistemnya lengkap di tracker Remote Blueprint — bukan cuma teori, tapi template siap pakai.",
+      "Reply KOMUNIKASI kalau mau template checkpoint & rekap kesepakatan ini."
+    ]
+  },
+  {
+    "slot": "siang",
+    "time_wib": "12:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "parts": [
+      "Klien resah karena gak tahu progress kerjaanmu. Padahal kamu udah kerja, cuma gak pernah lapor sampai deliverable jadi.",
+      "Efeknya klien mulai nanya-nanya, kadang micromanage, bahkan ragu lanjut kontrak. Bukan karena kerjaanmu jelek, tapi karena dia buta info.",
+      "Solusi 1: kirim update progress terjadwal, minimal 2x seminggu, walau isinya cuma 2-3 kalimat: udah sampai mana, next step apa, ada blocker gak.",
+      "Solusi 2: format update singkat — \"Done: X. In progress: Y. Perlu konfirmasi kamu soal Z.\" Klien baca 10 detik langsung ngerti.",
+      "Solusi 3: kalau ada delay, laporin duluan sebelum ditanya. Klien lebih toleran ke keterlambatan yang dikabarin daripada yang ketauan pas nanya.",
+      "Solusi 4: dokumentasikan semua update di satu thread/channel, jangan tercecer. Klien bisa scroll balik lihat histori tanpa nanya ulang ke kamu.",
+      "Sistem update progress + tracking klien yang lebih rapi dan otomatis udah aku susun lengkap di Remote Blueprint tracker.",
+      "Mau cek langsung template + sistemnya? Klik: https://lynk.id/remote_blueprint/k93nyvv2roje"
+    ]
+  },
+  {
+    "slot": "sore",
+    "time_wib": "16:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "parts": [
+      "Scope creep. Klien minta \"tambahan kecil\" berkali-kali, tapi kerjaan makin bengkak dan fee tetap sama.",
+      "Ini terjadi karena batas kerja gak dikomunikasikan jelas dari awal, jadi klien pikir semua permintaan susulan masih termasuk deal awal.",
+      "Solusi 1: tulis scope kerja detail di proposal/kontrak — jumlah revisi, jumlah deliverable, apa yang TIDAK termasuk. Klien baca dulu sebelum sepakat.",
+      "Solusi 2: kalau ada request tambahan di luar scope, jawab dengan opsi, bukan penolakan mentah. \"Ini di luar scope awal, bisa aku kerjain dengan tambahan biaya X atau masuk di kontrak berikutnya.\"",
+      "Solusi 3: selalu ada revisi limit tertulis, misal maksimal 2x revisi minor. Revisi ke-3 dst dihitung kerja tambahan berbayar.",
+      "Solusi 4: setiap kali klien nambah request via chat casual, konfirmasi ulang formal biar ada jejak — hindari \"katanya gratis\" di kemudian hari.",
+      "Cara nego scope & pricing tambahan ini udah aku bikin sistematis di tracker Remote Blueprint, lengkap sama template balasannya.",
+      "Cek sistem lengkapnya di sini: https://lynk.id/remote_blueprint/k93nyvv2roje"
+    ]
+  },
+  {
+    "slot": "sore2",
+    "time_wib": "18:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "parts": [
+      "Pernah gak, kamu udah kerja bagus tapi klien tetep komplain karena \"kurang komunikatif\"? Padahal hasil kerjaanmu oke.",
+      "Klien sering nilai freelancer bukan cuma dari hasil akhir, tapi dari seberapa gampang dihubungi dan seberapa jelas dikasih info selama proses.",
+      "Poin yang sering diabaikan: respons time. Klien gak butuh kamu online 24 jam, tapi butuh kepastian kapan kamu bakal balas — misal maksimal 12-24 jam.",
+      "Poin lain: bahasa laporan. Klien non-teknis males baca jargon. Sederhanakan istilah teknis jadi dampak yang dia paham, bukan proses detailnya.",
+      "Poin lain: konfirmasi paham sebelum eksekusi. Sebelum mulai kerja dari brief yang ambigu, tanya balik dulu — lebih cepat 5 menit nanya daripada revisi total di akhir.",
+      "Kalau kamu ngerasa udah kerja keras tapi klien tetap kurang puas soal komunikasi, biasanya bukan skill teknis yang kurang, tapi 3 poin di atas.",
+      "Kerangka komunikasi klien yang bikin freelancer keliatan profesional walau baru mulai, itu ada di sistem Remote Blueprint.",
+      "Share dong di reply, poin komunikasi mana yang paling sering jadi masalah buat kamu sama klien?"
+    ]
+  },
+  {
+    "slot": "malam",
+    "time_wib": "20:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "parts": [
+      "Freelancer yang dapat repeat order bukan selalu yang paling skillful. Sering yang paling gampang diajak kerja sama.",
+      "Klien capek deal sama freelancer yang hasilnya bagus tapi komunikasinya bikin pusing — susah dihubungi, jawaban ambigu, laporan berantakan.",
+      "Kebiasaan 1: closing setiap sesi kerja dengan next step jelas. Klien tahu apa yang terjadi selanjutnya tanpa harus nanya.",
+      "Kebiasaan 2: kalau salah atau telat, akui cepat dan kasih solusi, jangan defensif. Klien lebih respect ke freelancer yang jujur daripada yang cari alasan.",
+      "Kebiasaan 3: tutup setiap proyek dengan rekap hasil + tawaran lanjutan singkat. Ini yang bikin klien balik lagi tanpa kamu harus jualan ulang dari nol.",
+      "Kebiasaan 4: simpan histori komunikasi & feedback tiap klien, biar kerja sama kedua kalinya makin efisien karena kamu udah paham gaya dia.",
+      "Kebiasaan-kebiasaan ini yang jadi fondasi sistem komunikasi klien di tracker Remote Blueprint, biar gak cuma one-time project doang.",
+      "Reply KOMUNIKASI buat dapat rangkaian template closing project + rekap yang aku maksud."
+    ]
+  }
+]

@@ -175,7 +175,7 @@
     "time_wib": "08:08",
     "threads_topic": "Profil Freelance",
     "schedule_id": "6a790e1d8ead354ff5204d7c",
-    "status": "pending",
+    "status": "success",
     "reply_count": 7,
     "post_id": null
   },
@@ -185,7 +185,7 @@
     "time_wib": "12:08",
     "threads_topic": "Profil Freelance",
     "schedule_id": "6a790e1d795f3fc748a03999",
-    "status": "pending",
+    "status": "success",
     "reply_count": 7,
     "post_id": null
   },
@@ -195,7 +195,7 @@
     "time_wib": "16:08",
     "threads_topic": "Profil Freelance",
     "schedule_id": "6a790e1d795f3fc748a039a7",
-    "status": "pending",
+    "status": "success",
     "reply_count": 7,
     "post_id": null
   },
@@ -205,7 +205,7 @@
     "time_wib": "18:08",
     "threads_topic": "Profil Freelance",
     "schedule_id": "6a790e1d795f3fc748a039b4",
-    "status": "pending",
+    "status": "success",
     "reply_count": 7,
     "post_id": null
   },
@@ -215,6 +215,156 @@
     "time_wib": "20:08",
     "threads_topic": "Profil Freelance",
     "schedule_id": "6a790e1e795f3fc748a039c1",
+    "status": "success",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-11",
+    "slot": "pagi",
+    "time_wib": "08:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "schedule_id": "6a7a5fddc8747547e2fdd0ef",
+    "status": "success",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-11",
+    "slot": "siang",
+    "time_wib": "12:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "schedule_id": "6a7a5fddc8747547e2fdd0fc",
+    "status": "success",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-11",
+    "slot": "sore",
+    "time_wib": "16:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "schedule_id": "6a7a5fddc8747547e2fdd103",
+    "status": "success",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-11",
+    "slot": "sore2",
+    "time_wib": "18:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "schedule_id": "6a7a5fddc8747547e2fdd107",
+    "status": "success",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-11",
+    "slot": "malam",
+    "time_wib": "20:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "schedule_id": "6a7a5fddc8747547e2fdd10e",
+    "status": "success",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-12",
+    "slot": "pagi",
+    "time_wib": "08:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "schedule_id": "6a7bb1681919fea5d79112e6",
+    "status": "success",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-12",
+    "slot": "siang",
+    "time_wib": "12:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "schedule_id": "6a7bb168c8747547e223647c",
+    "status": "success",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-12",
+    "slot": "sore",
+    "time_wib": "16:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "schedule_id": "6a7bb169c8747547e2236486",
+    "status": "success",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-12",
+    "slot": "sore2",
+    "time_wib": "18:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "schedule_id": "6a7bb169c8747547e2236499",
+    "status": "success",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-12",
+    "slot": "malam",
+    "time_wib": "20:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "schedule_id": "6a7bb169c8747547e22364a6",
+    "status": "success",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-13",
+    "slot": "pagi",
+    "time_wib": "08:08",
+    "threads_topic": "Scale Freelance",
+    "schedule_id": "6a7d025be7dc2ca6b04eaae1",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-13",
+    "slot": "siang",
+    "time_wib": "12:08",
+    "threads_topic": "Scale Freelance",
+    "schedule_id": "6a7d025c6b32a08c98d8916f",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-13",
+    "slot": "sore",
+    "time_wib": "16:08",
+    "threads_topic": "Scale Freelance",
+    "schedule_id": "6a7d025c6b32a08c98d89179",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-13",
+    "slot": "sore2",
+    "time_wib": "18:08",
+    "threads_topic": "Scale Freelance",
+    "schedule_id": "6a7d025ce7dc2ca6b04eaaf7",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-13",
+    "slot": "malam",
+    "time_wib": "20:08",
+    "threads_topic": "Scale Freelance",
+    "schedule_id": "6a7d025ce7dc2ca6b04eaafc",
     "status": "pending",
     "reply_count": 7,
     "post_id": null

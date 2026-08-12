@@ -27,5 +27,26 @@
     "sore": "6a790e1d795f3fc748a039a7",
     "sore2": "6a790e1d795f3fc748a039b4",
     "malam": "6a790e1e795f3fc748a039c1"
+  },
+  "2026-08-11": {
+    "pagi": "6a7a5fddc8747547e2fdd0ef",
+    "siang": "6a7a5fddc8747547e2fdd0fc",
+    "sore": "6a7a5fddc8747547e2fdd103",
+    "sore2": "6a7a5fddc8747547e2fdd107",
+    "malam": "6a7a5fddc8747547e2fdd10e"
+  },
+  "2026-08-12": {
+    "pagi": "6a7bb1681919fea5d79112e6",
+    "siang": "6a7bb168c8747547e223647c",
+    "sore": "6a7bb169c8747547e2236486",
+    "sore2": "6a7bb169c8747547e2236499",
+    "malam": "6a7bb169c8747547e22364a6"
+  },
+  "2026-08-13": {
+    "pagi": "6a7d025be7dc2ca6b04eaae1",
+    "siang": "6a7d025c6b32a08c98d8916f",
+    "sore": "6a7d025c6b32a08c98d89179",
+    "sore2": "6a7d025ce7dc2ca6b04eaaf7",
+    "malam": "6a7d025ce7dc2ca6b04eaafc"
   }
 }
