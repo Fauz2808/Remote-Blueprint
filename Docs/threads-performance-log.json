@@ -375,7 +375,7 @@
     "time_wib": "08:08",
     "threads_topic": "Profil Freelance",
     "schedule_id": "6a7e53eee7dc2ca6b080699c",
-    "status": "pending",
+    "status": "success",
     "reply_count": 7,
     "post_id": null
   },
@@ -385,7 +385,7 @@
     "time_wib": "12:08",
     "threads_topic": "Profil Freelance",
     "schedule_id": "6a7e53ee6b32a08c98f8467b",
-    "status": "pending",
+    "status": "success",
     "reply_count": 7,
     "post_id": null
   },
@@ -395,7 +395,7 @@
     "time_wib": "16:08",
     "threads_topic": "Profil Freelance",
     "schedule_id": "6a7e53eee7dc2ca6b08069a8",
-    "status": "pending",
+    "status": "success",
     "reply_count": 7,
     "post_id": null
   },
@@ -405,7 +405,7 @@
     "time_wib": "18:08",
     "threads_topic": "Profil Freelance",
     "schedule_id": "6a7e53ef6b32a08c98f84687",
-    "status": "pending",
+    "status": "success",
     "reply_count": 7,
     "post_id": null
   },
@@ -415,6 +415,56 @@
     "time_wib": "20:08",
     "threads_topic": "Profil Freelance",
     "schedule_id": "6a7e53efe7dc2ca6b08069b4",
+    "status": "success",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-15",
+    "slot": "pagi",
+    "time_wib": "08:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "schedule_id": "6a7fa564c93a8f645a1fc9d4",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-15",
+    "slot": "siang",
+    "time_wib": "12:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "schedule_id": "6a7fa56416c9335a3602e165",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-15",
+    "slot": "sore",
+    "time_wib": "16:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "schedule_id": "6a7fa564c93a8f645a1fc9ee",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-15",
+    "slot": "sore2",
+    "time_wib": "18:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "schedule_id": "6a7fa56416c9335a3602e17f",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-15",
+    "slot": "malam",
+    "time_wib": "20:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "schedule_id": "6a7fa56416c9335a3602e191",
     "status": "pending",
     "reply_count": 7,
     "post_id": null
