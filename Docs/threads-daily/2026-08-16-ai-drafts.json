@@ -1,0 +1,77 @@
+[
+  {
+    "slot": "pagi",
+    "time_wib": "08:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "parts": [
+      "Kerjaan sudah jalan, tapi klien tetap sering bertanya, ‘Sudah sampai mana?’ Biasanya bukan karena kamu lambat, melainkan karena progresmu tidak terlihat.",
+      "Freelancer sering baru memberi kabar saat tugas selesai atau saat ada masalah. Di tengah proses, klien dibiarkan menebak status, risiko, dan waktu selesai.",
+      "Tentukan jadwal update sejak awal: misalnya setiap Selasa dan Jumat, atau setiap selesai satu tahap. Klien jadi tahu kapan harus menunggu kabar tanpa terus mengejar.",
+      "Pakai format tiga baris: Selesai, Sedang dikerjakan, Perlu konfirmasi. Isi tiap baris dengan hasil konkret, bukan kalimat kabur seperti ‘masih proses’.",
+      "Contoh: Selesai—alur pembayaran. Sedang dikerjakan—halaman riwayat transaksi. Perlu konfirmasi—apakah ekspor memakai CSV atau XLSX.",
+      "Tutup update dengan target berikutnya dan tanggalnya. Kalau ada hambatan, sebut dampak serta keputusan yang dibutuhkan agar klien bisa merespons cepat.",
+      "Format update, checkpoint, dan catatan keputusan seperti ini sudah disusun lebih runtut di tracker Remote Blueprint supaya komunikasi tidak bergantung pada ingatan.",
+      "Balas UPDATE kalau kamu mau mulai merapikan laporan progres ke klien."
+    ]
+  },
+  {
+    "slot": "siang",
+    "time_wib": "12:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "parts": [
+      "Report klien bisa penuh angka tetapi tetap tidak membantu. Klien membaca impresi, klik, atau tiket selesai tanpa tahu apakah hasilnya bagus dan apa yang harus dilakukan berikutnya.",
+      "Masalah muncul saat freelancer memindahkan data mentah ke laporan tanpa menerjemahkan maknanya. Akhirnya rapat habis untuk menjelaskan tabel, bukan mengambil keputusan.",
+      "Susun report dalam urutan: target, hasil, penyebab, tindakan. Satu metrik hanya masuk kalau terkait target atau keputusan klien.",
+      "Bandingkan hasil dengan patokan yang jelas: target awal, periode sebelumnya, atau batas layanan. Angka ‘120 leads’ baru berguna jika klien tahu targetnya 100 dan kualitasnya bagaimana.",
+      "Untuk tiap selisih besar, tulis satu dugaan penyebab beserta bukti. Pisahkan fakta dan asumsi agar klien tidak menganggap analisis sementara sebagai kepastian.",
+      "Akhiri dengan maksimal tiga tindakan: apa yang dilakukan, siapa penanggung jawabnya, dan kapan diperiksa lagi. Report berubah dari arsip menjadi alat kerja.",
+      "Struktur report dan pemantauan tindak lanjut ini tersedia dalam tracker Remote Blueprint agar hasil kerja, keputusan, dan langkah berikutnya tercatat di satu sistem.",
+      "Kalau ingin memakai sistemnya, lihat tracker Remote Blueprint di https://lynk.id/remote_blueprint/k93nyvv2roje"
+    ]
+  },
+  {
+    "slot": "sore",
+    "time_wib": "16:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "parts": [
+      "Revisi sering melebar bukan karena klien sengaja menambah kerjaan. Penyebabnya kerap sederhana: persetujuan diberikan lewat chat terpisah, lalu versi dan keputusan tidak tercatat.",
+      "Freelancer mengerjakan permintaan terbaru tanpa mengecek apakah itu koreksi hasil, perubahan brief, atau fitur baru. Semua disebut revisi, padahal dampaknya ke waktu dan biaya berbeda.",
+      "Setiap permintaan masuk, klasifikasikan: perbaikan kesalahan, revisi dalam scope, atau tambahan scope. Jangan mulai sebelum kategorinya jelas.",
+      "Balas dengan ringkasan keputusan: ‘Saya tangkap perubahan A menjadi B, berdampak pada halaman C, target selesai Kamis.’ Minta konfirmasi satu kalimat.",
+      "Simpan daftar perubahan berisi tanggal, peminta, keputusan, dan status. Nomori versi file atau tautan supaya klien meninjau hasil yang sama denganmu.",
+      "Jika tambahan scope, beri pilihan konkret: tukar dengan item lama, pindah ke fase berikutnya, atau tambah estimasi. Klien tetap punya kendali tanpa membuat batas kerja kabur.",
+      "Tracker Remote Blueprint menyatukan brief, catatan revisi, dan checkpoint supaya batas scope bisa dijaga dengan bukti, bukan perdebatan dari ingatan.",
+      "Sistem pencatatan lengkapnya bisa dilihat di https://lynk.id/remote_blueprint/k93nyvv2roje"
+    ]
+  },
+  {
+    "slot": "sore2",
+    "time_wib": "18:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "parts": [
+      "Pernah selesai mengerjakan tugas, lalu pembayaran tertahan karena klien merasa hasil akhirnya belum jelas? Sering kali serah terima dilakukan tanpa daftar hasil dan kriteria selesai.",
+      "File dikirim lewat chat, akses tersebar di beberapa tautan, dan tidak ada pernyataan bahwa milestone siap diperiksa. Klien pun menunda persetujuan karena masih harus mencari konteks.",
+      "Sebelum kirim, cocokkan hasil dengan brief baris per baris. Tandai selesai, berubah atas persetujuan, atau masih menunggu bahan dari klien.",
+      "Kirim satu paket serah terima: tautan hasil, daftar fitur atau file, cara mengecek, serta akses yang dibutuhkan. Hindari mengirim aset satu per satu tanpa indeks.",
+      "Tuliskan kriteria persetujuan: ‘Mohon cek tiga poin ini dan beri konfirmasi paling lambat Rabu.’ Permintaan spesifik lebih mudah dijawab daripada ‘silakan dicek’.",
+      "Setelah disetujui, catat tanggal, versi final, dan pekerjaan lanjutan yang tidak termasuk milestone. Ini melindungi kedua pihak saat proyek dibuka kembali.",
+      "Alur checkpoint sampai serah terima ini dirangkum di tracker Remote Blueprint agar status kerja dan persetujuan klien tetap mudah dilacak.",
+      "Menurutmu, bagian serah terima mana yang paling sering bikin macet? Balas KOMUNIKASI."
+    ]
+  },
+  {
+    "slot": "malam",
+    "time_wib": "20:08",
+    "threads_topic": "Komunikasi Klien Freelance",
+    "parts": [
+      "Klien bisa puas dengan hasilmu tetapi tidak kembali memesan. Salah satu penyebabnya: proyek ditutup setelah file final dikirim, tanpa rangkuman dampak dan kebutuhan berikutnya.",
+      "Freelancer lalu menghubungi klien berbulan-bulan kemudian dengan pesan ‘ada proyek lagi?’ Pesan ini membebankan klien untuk mencari sendiri alasan bekerja sama lagi.",
+      "Saat proyek selesai, kirim ringkasan sebelum-sesudah: masalah awal, perubahan yang dibuat, dan hasil yang sudah terlihat. Pakai data jika tersedia.",
+      "Catat peluang lanjutan yang muncul selama pengerjaan, tetapi jangan langsung menjual semuanya. Pilih satu kebutuhan yang paling dekat dengan tujuan klien.",
+      "Buat jadwal tindak lanjut berdasarkan konteks: tujuh hari untuk cek penggunaan, 30 hari untuk membaca hasil, atau menjelang periode kerja berikutnya.",
+      "Saat menghubungi lagi, bawa temuan: ‘Saya lihat halaman X belum memakai pola yang sama; ini bisa mengurangi langkah pengguna.’ Saran spesifik lebih bernilai daripada menanyakan lowongan.",
+      "Tracker Remote Blueprint membantu menyimpan hasil proyek, peluang lanjutan, dan jadwal follow-up agar repeat order dibangun dari konteks kerja yang nyata.",
+      "Balas KOMUNIKASI kalau kamu mau membangun penutupan proyek yang membuka peluang kerja berikutnya."
+    ]
+  }
+]
