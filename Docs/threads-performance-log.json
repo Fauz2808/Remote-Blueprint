@@ -475,7 +475,7 @@
     "time_wib": "08:08",
     "threads_topic": "Komunikasi Klien Freelance",
     "schedule_id": "6a80f6eb16c9335a36371115",
-    "status": "pending",
+    "status": "success",
     "reply_count": 7,
     "post_id": null
   },
@@ -485,7 +485,7 @@
     "time_wib": "12:08",
     "threads_topic": "Komunikasi Klien Freelance",
     "schedule_id": "6a80f6ebc93a8f645a41a947",
-    "status": "pending",
+    "status": "success",
     "reply_count": 7,
     "post_id": null
   },
@@ -495,7 +495,7 @@
     "time_wib": "16:08",
     "threads_topic": "Komunikasi Klien Freelance",
     "schedule_id": "6a80f6ebc93a8f645a41a951",
-    "status": "pending",
+    "status": "success",
     "reply_count": 7,
     "post_id": null
   },
@@ -505,7 +505,7 @@
     "time_wib": "18:08",
     "threads_topic": "Komunikasi Klien Freelance",
     "schedule_id": "6a80f6ecc93a8f645a41a959",
-    "status": "pending",
+    "status": "success",
     "reply_count": 7,
     "post_id": null
   },
@@ -515,6 +515,56 @@
     "time_wib": "20:08",
     "threads_topic": "Komunikasi Klien Freelance",
     "schedule_id": "6a80f6ec16c9335a3637113e",
+    "status": "success",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-17",
+    "slot": "pagi",
+    "time_wib": "08:08",
+    "threads_topic": "Profil Freelance",
+    "schedule_id": "6a82488016c9335a366bec8d",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-17",
+    "slot": "siang",
+    "time_wib": "12:08",
+    "threads_topic": "Profil Freelance",
+    "schedule_id": "6a82488016c9335a366bec96",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-17",
+    "slot": "sore",
+    "time_wib": "16:08",
+    "threads_topic": "Profil Freelance",
+    "schedule_id": "6a82488016c9335a366beca0",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-17",
+    "slot": "sore2",
+    "time_wib": "18:08",
+    "threads_topic": "Profil Freelance",
+    "schedule_id": "6a82488116c9335a366beca9",
+    "status": "pending",
+    "reply_count": 7,
+    "post_id": null
+  },
+  {
+    "date": "2026-08-17",
+    "slot": "malam",
+    "time_wib": "20:08",
+    "threads_topic": "Profil Freelance",
+    "schedule_id": "6a82488116c9335a366becb1",
     "status": "pending",
     "reply_count": 7,
     "post_id": null
