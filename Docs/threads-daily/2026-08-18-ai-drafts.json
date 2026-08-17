@@ -1,0 +1,77 @@
+[
+  {
+    "slot": "pagi",
+    "time_wib": "08:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "parts": [
+      "Sudah menurunkan harga dan mengirim banyak proposal, tapi tetap tidak dilihat klien? Masalahnya sering bukan tarif, melainkan proposal dikirim ke lowongan yang peluangnya sudah tipis.",
+      "Lowongan berumur lama, pelamar menumpuk, pembayaran belum terverifikasi, atau riwayat perekrutan rendah membuat Connect habis sebelum isi proposal sempat diuji.",
+      "Sebelum melamar, cek empat hal: waktu tayang, jumlah pelamar, status pembayaran, dan rasio perekrutan klien. Utamakan lowongan baru dengan kebutuhan yang sesuai bukti kerja kamu.",
+      "Buat batas kelayakan sederhana. Lamar hanya jika kamu memenuhi minimal tiga syarat utama dan punya satu contoh kerja yang relevan.",
+      "Jangan turunkan harga otomatis. Cocokkan tarif dengan ruang lingkup, lalu tawarkan hasil awal yang jelas agar risiko klien terasa lebih kecil.",
+      "Catat setiap lamaran: jenis proyek, jumlah pelamar, pembuka proposal, tarif, dan hasil. Setelah 10 proposal, perbaiki satu variabel saja supaya penyebabnya terbaca.",
+      "Filter lowongan, batas kelayakan, dan evaluasi proposal ini disusun lebih runtut di tracker Remote Blueprint supaya bidding tidak lagi berdasarkan tebakan.",
+      "Kalau mau mulai audit pola lamaranmu, balas BIDDING."
+    ]
+  },
+  {
+    "slot": "siang",
+    "time_wib": "12:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "parts": [
+      "Proposal sering dibuka dengan perkenalan panjang: nama, jabatan, lalu daftar pengalaman. Padahal klien sedang mencari tanda bahwa kamu memahami masalah di lowongannya.",
+      "Akibatnya, keahlian yang sebenarnya cocok terkubur sebelum klien sampai ke portofolio. Pembuka generik juga membuat proposal kamu mirip puluhan pelamar lain.",
+      "Tulis baris pertama dari detail paling spesifik di brief. Contoh: “Masalah sinkronisasi stok ini biasanya muncul saat webhook gagal dicatat ulang.”",
+      "Baris kedua isi rencana singkat: apa yang akan diperiksa, apa yang dikerjakan, dan hasil yang diterima. Hindari mengulang seluruh deskripsi lowongan.",
+      "Pilih satu bukti yang paling dekat dengan kebutuhan klien. Jelaskan kondisi awal, tindakanmu, dan hasilnya dalam dua kalimat, bukan menempel daftar semua proyek.",
+      "Tutup dengan satu pertanyaan yang membantu memperjelas pekerjaan, misalnya sumber data, tenggat, atau batas ruang lingkup. Pertanyaan spesifik membuka percakapan lebih baik daripada “kapan bisa mulai?”.",
+      "Struktur pembuka, bukti, rencana, dan pertanyaan ini tersedia sebagai alur kerja di tracker Remote Blueprint agar setiap proposal tetap spesifik tanpa menulis dari nol.",
+      "Kalau ingin menyusun proposal dengan alur yang konsisten, buka tracker Remote Blueprint di https://lynk.id/remote_blueprint/k93nyvv2roje"
+    ]
+  },
+  {
+    "slot": "sore",
+    "time_wib": "16:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "parts": [
+      "Connect cepat habis saat semua lowongan yang terasa “masih bisa dikerjakan” ikut dilamar. Masalahnya, kemampuan mengerjakan belum tentu cukup kuat untuk memenangkan proyek.",
+      "Tanpa batas seleksi, kamu mencampur lowongan sangat cocok dengan lowongan spekulatif. Hasil akhirnya sulit dibaca: proposalnya lemah atau targetnya memang salah.",
+      "Beri nilai 0-2 untuk tiga hal: kecocokan keahlian, bukti kerja relevan, dan kejelasan kebutuhan. Lamar prioritas skor 5-6; simpan skor 3-4 hanya jika persaingan rendah.",
+      "Tambahkan pemeriksaan klien: pembayaran terverifikasi, pernah merekrut, dan deskripsi cukup rinci. Satu tanda kurang masih wajar; beberapa tanda sekaligus berarti risiko tinggi.",
+      "Tetapkan anggaran Connect mingguan. Sisakan sebagian untuk lowongan yang sangat cocok, jangan habiskan seluruhnya pada hari pertama.",
+      "Ukur hasil per kelompok skor. Jika skor tinggi tetap tidak dibuka, perbaiki pembuka; jika dibuka tetapi tidak dibalas, perbaiki bukti, rencana, atau tarif.",
+      "Matriks seleksi dan pencatatan hasil ini ada dalam tracker Remote Blueprint supaya penggunaan Connect bisa diputuskan dari data, bukan rasa takut ketinggalan.",
+      "Untuk memakai sistem seleksi bidding yang lebih terukur, akses tracker Remote Blueprint di https://lynk.id/remote_blueprint/k93nyvv2roje"
+    ]
+  },
+  {
+    "slot": "sore2",
+    "time_wib": "18:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "parts": [
+      "Proposal buatan AI sering rapi, tetapi tetap tidak dibalas karena isinya bisa dikirim ke proyek mana pun. Nama klien diganti, sementara diagnosis dan bukti tetap umum.",
+      "Kalimat seperti “saya yakin dapat membantu” tidak menunjukkan cara kerja. Klien juga tidak mendapat alasan untuk percaya bahwa kamu membaca batasan teknis atau bisnisnya.",
+      "Gunakan AI setelah kamu menulis tiga bahan sendiri: masalah spesifik dari brief, bukti paling relevan, dan rencana dua langkah. AI bertugas merapikan, bukan menebak konteks.",
+      "Minta AI menjaga fakta dan memangkas pengulangan. Jangan biarkan alat menambah angka hasil, pengalaman, atau kemampuan yang tidak bisa kamu buktikan.",
+      "Setelah draf jadi, lakukan tes penggantian nama. Jika proposal masih cocok untuk lima lowongan lain, tambahkan detail brief dan keputusan kerja yang hanya relevan untuk proyek itu.",
+      "Baca ulang dengan tiga pertanyaan: masalah apa yang dipahami, bukti apa yang diberikan, dan langkah pertama apa yang ditawarkan? Jika satu jawaban kosong, revisi sebelum kirim.",
+      "Checklist konteks, bukti, dan pemeriksaan akhir ini dirangkai dalam tracker Remote Blueprint agar AI mempercepat proposal tanpa membuatnya generik.",
+      "Kalau mau format proposal yang tetap spesifik meski dibantu AI, balas PROPOSAL."
+    ]
+  },
+  {
+    "slot": "malam",
+    "time_wib": "20:08",
+    "threads_topic": "Strategi Bidding Freelance",
+    "parts": [
+      "Sudah mengirim 20 proposal tetapi tidak tahu apa yang harus diperbaiki? Jumlah lamaran tanpa catatan hanya menghasilkan lelah, bukan diagnosis.",
+      "Banyak freelancer sekaligus mengganti tarif, pembuka, panjang proposal, dan target lowongan. Saat hasil berubah, tidak ada cara mengetahui faktor mana yang bekerja.",
+      "Buat tabel sederhana dengan kolom tanggal, jenis proyek, skor kecocokan, pembuka, tarif, dilihat, dibalas, dan wawancara. Isi segera setelah melamar.",
+      "Evaluasi setiap 10 proposal, bukan setiap satu penolakan. Sampel kecil mudah membuat kamu bereaksi berlebihan pada satu klien.",
+      "Baca tahap yang bocor. Tidak dilihat berarti target atau pembuka perlu diuji; dilihat tanpa balasan berarti bukti, rencana, atau tarif perlu diperbaiki.",
+      "Ubah satu variabel untuk 10 proposal berikutnya. Pertahankan variabel lain supaya perbandingan tetap berguna dan keputusan tidak berbasis perasaan.",
+      "Tracker Remote Blueprint menempatkan catatan lamaran dan evaluasi per tahap dalam satu sistem, jadi kamu tahu kapan harus mengubah target, proposal, atau penawaran.",
+      "Kalau mau mulai bidding dengan evaluasi yang jelas, balas BIDDING."
+    ]
+  }
+]
